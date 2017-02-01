@@ -1,0 +1,4 @@
+services:
+#    gstaycar.example:
+#        class: Gstay\carBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

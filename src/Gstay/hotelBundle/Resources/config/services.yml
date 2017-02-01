@@ -1,0 +1,4 @@
+services:
+#    gstayhotel.example:
+#        class: Gstay\hotelBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
