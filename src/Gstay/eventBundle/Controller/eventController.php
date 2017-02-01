@@ -7,7 +7,6 @@
  */
 
 namespace Gstay\eventBundle\Controller;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
