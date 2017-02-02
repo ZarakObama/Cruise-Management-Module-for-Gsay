@@ -6,9 +6,16 @@
  * Time: 22:03
  */
 
-namespace Gstay\eventBundle\Entity;
+namespace Gstay\guesthostBundle\Entity;
 
 
+
+use Doctrine\ORM\Mapping as ORM ;
+
+
+/**
+ * @ORM\Entity
+ */
 class Equipement
 {
 
@@ -22,81 +29,81 @@ class Equipement
 
     /**
      * @ORM\ManyToOne(targetEntity="Logement", inversedBy="Equipement")
-     * @ORM\JoinColumn(name="id_logement", referencedColumnName="idlogement")
+     * @ORM\JoinColumn(name="idequiplogement", referencedColumnName="idlogement")
      */
 
-    private $id_logement;
+    private $idequiplogement;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",options={"default" : "0"})
      */
     private $parking;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",options={"default" : "0"})
      */
     private $cuisine;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",options={"default" : "0"})
      */
     private $wifi;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",options={"default" : "0"})
      */
 
     private $Machinelaver;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",options={"default" : "0"})
      */
 
     private $Ascenseur;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",options={"default" : "0"})
      */
 
     private $Interphone;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",options={"default" : "0"})
      */
 
     private $Television;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",options={"default" : "0"})
      */
 
     private $Piscine;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",options={"default" : "0"})
      */
 
     private $Jacuzzi;
 
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",options={"default" : "0"})
      */
 
     private $Climatisation;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",options={"default" : "0"})
      */
 
     private $Chauffage;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",options={"default" : "0"})
      */
 
     private $Cintres; //me3la9
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",options={"default" : "0"})
      */
 
     private $Ferarepasser;

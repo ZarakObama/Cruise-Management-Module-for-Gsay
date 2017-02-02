@@ -1,11 +1,13 @@
 <?php
 
+namespace Gstay\guesthostBundle\Entity;
+use Doctrine\ORM\Mapping as ORM ;
+
+
 /**
- * Created by PhpStorm.
- * User: USER
- * Date: 02/02/2017
- * Time: 21:48
+ * @ORM\Entity
  */
+
 class Logement
 {
     /**
