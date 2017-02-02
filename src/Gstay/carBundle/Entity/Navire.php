@@ -527,7 +527,7 @@ class Navire
      * @Assert\Image(
      *     allowLandscape = false,
      *     allowPortrait = false,
-     *     minWidth = 200,
+     *     minWidth = 201,
      *     maxWidth = 400,
      *     minHeight = 200,
      *     maxHeight = 400
