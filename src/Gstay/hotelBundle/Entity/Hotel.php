@@ -56,6 +56,26 @@ class Hotel
      * @ORM\Column(type="integer")
      */
     private $matricule_fiscale;
+    /**
+     * @ORM\Column(type="string",length=255)
+     */
+    private $photo;
+
+    /**
+     * @return mixed
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param mixed $photo
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+    }
 
     /**
      * @return mixed
