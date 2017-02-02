@@ -7,7 +7,7 @@
  */
 
 namespace Gstay\hotelBundle\entity;
-
+namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
@@ -38,7 +38,7 @@ class promoHotel
      */
     private $photo;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="integer")
      */
     private $pourcentage;
     /**
