@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>exemple3</title>
+	<script type="text/javascript">
+		
+	
+
+
+			
+
+		var hamdi = new XMLHttpRequest();
+		hamdi.open("get","dellaa.php",true);
+		hamdi.send() // avec le GET  les parametre sont vides ;
+		hamdi.onreadystatechange = function result()
+		{
+			document.getElementById("aff").innerHTML= hamdi.responseText;
+		}
+
+		function tabb() {
+		var y = document.getElementById("select").selectedIndex;
+   		var x = document.getElementById("select").options.item(y).text;
+
+		var dellaa = new XMLHttpRequest();
+		dellaa.open("get","dellaa2.php?x="+x,true);
+		dellaa.send()  // avec le GET  les parametre sont vides ;
+		dellaa.onreadystatechange = function result1()
+		{
+			document.getElementById("tab").innerHTML= dellaa.responseText;
+		}
+
+
+	}
+
+	</script>
+</head>
+<body>
+
+<span id="aff"> 
+</span>
+<br>
+
+<br>
+<span id="tab"> 
+</span>
+
+</body>
+</html>

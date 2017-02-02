@@ -1,5 +1,6 @@
 <?php
 namespace Gstay\eventBundle\Entity;
+namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM ;
 /**
  * Created by PhpStorm.
@@ -19,6 +20,12 @@ class evenement
      * @ORM\GeneratedValue
      */
     private $id ;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="evenement")
+     * @ORM\JoinColumn(name="id_organisateur", referencedColumnName="id")
+     */
+    private $id_organisateur ;
 //id_hotel
     /**
      * @ORM\Column(type="string",length=255)
@@ -77,6 +84,21 @@ class evenement
     public function setId($id)
     {
         $this->id = $id;
+    }
+    /**
+     * @return mixed
+     */
+    public function getIdOrganisateur()
+    {
+        return $this->id_organisateur;
+    }
+
+    /**
+     * @param mixed $id_organisateur
+     */
+    public function setIdOrganisateur($id_organisateur)
+    {
+        $this->id_organisateur = $id_organisateur;
     }
 
     /**
@@ -238,6 +260,8 @@ class evenement
     {
         $this->promo = $promo;
     }
+
+
 
 
 }
