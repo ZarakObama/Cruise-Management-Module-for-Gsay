@@ -19,10 +19,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Cabine
 {
     /**
-     * @ORM\GeneratedValue
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     */
+ * @ORM\GeneratedValue
+ * @ORM\Id
+ * @ORM\Column(type="integer")
+ */
     private $id ;
     /**
      * @ORM\ManyToOne(targetEntity="navire", inversedBy="cabine")
