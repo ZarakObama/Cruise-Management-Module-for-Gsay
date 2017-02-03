@@ -11,6 +11,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
+use AppBundle\Entity\User;
+
+
 class eventController extends Controller
 {
     /**
@@ -18,6 +21,20 @@ class eventController extends Controller
      */
     public function indexAction()
     {
+
+       /* $user = $this->getUser();
+        $id=0;
+        if(!empty($user))
+        {
+            $id=$this->getUser()->getId();
+
+        }
+
+
+         $this->render('GstayeventBundle:Default:layout.html.twig',array(
+            'id'=>$id
+        ));*/
+
         return $this->render('GstayeventBundle:pages:test.html.twig');
     }
 

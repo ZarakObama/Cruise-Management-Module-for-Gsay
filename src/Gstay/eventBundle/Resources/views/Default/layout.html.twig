@@ -173,18 +173,31 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#" title="">Cruises</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="home-cruise.html" title="">Cruises</a>
-                                        </li>
-                                        <li>
-                                            <a href="cruise-list.html">Cruise List</a>
-                                        </li>
-                                        <li>
-                                            <a href="cruise-detail.html">Cruise Detail</a>
-                                        </li>
-                                    </ul>
+
+                                </li>
+                                <a href="#" title="">Cruises</a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="home-cruise.html" title="">Cruises</a>
+                                    </li>
+                                    <li>
+                                        <a href="cruise-list.html">Cruise List</a>
+                                    </li>
+                                    <li>
+                                        <a href="cruise-detail.html">Cruise Detail</a>
+                                    </li>
+                                </ul>
+                                <li>
+
+
+                                        {% if app.user   %}
+                                            <a href="{{ path("fos_user_profile_show") }}" > profile</a>
+
+                                        {% else %}
+                                            <a href="{{ path("fos_user_security_login") }}" >login/register</a>
+
+                                        {% endif %}
+
                                 </li>
 
                             </ul>
