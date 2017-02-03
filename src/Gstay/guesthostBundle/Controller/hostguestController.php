@@ -13,11 +13,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class hostguestController extends Controller
 {
+
     /**
-     * @Route("/")
+     * @Route("/userprofile")
      */
     public function indexAction()
     {
-        return $this->render('GstayguesthostBundle:Default:index.html.twig');
+        return $this->render('GstayguesthostBundle:interface:profile.html.twig');
     }
 }
