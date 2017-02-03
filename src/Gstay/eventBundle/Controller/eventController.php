@@ -35,7 +35,7 @@ class eventController extends Controller
             'id'=>$id
         ));*/
 
-        return $this->render('GstayeventBundle:pages:test.html.twig');
+        return $this->render('test.html.twig');
     }
 
 }
