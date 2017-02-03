@@ -15,7 +15,7 @@ class hostguestController extends Controller
 {
 
     /**
-     * @Route("/userprofile")
+     * @Route("/userprofile",name="userprofile")
      */
     public function indexAction()
     {
