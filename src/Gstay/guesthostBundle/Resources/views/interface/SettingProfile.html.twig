@@ -204,21 +204,22 @@
                         <div class="col-md-3">
                             <div class="user-profile__header">
                                 <h4>Sarah Brown</h4>
-                                <span>Member Since May 2012</span>
+                                <span>Member Sincen May 2012</span>
                                 <p>
 
-                                    <img src=" {{ asset('bundles/app/images/user/img-1.jpg') }}" alt="">
+                                    <img src="{{ asset('bundles/app/images/user/img-1.jpg') }}" alt="">
                                 </p>
-
                             </div>
+
                             <ul class="user-profile__navigation">
-                                <li><a href="user-booking.html"><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">My Bookings</a></li>
-                                <li><a href="{{ path('userprofile') }}"><img src="  {{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">My profile</a></li>
-                                <li><a href="user-review.html"><img src="{{ asset('bundles/app/images/icon/icon-review.png') }}" alt="">My reviews</a></li>
-                                <li class="current"><a href="{{ path('setting') }}"><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">Settings</a></li>
+                                <li><a href="{{path('listbooking') }}"><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">My Bookings</a></li>
+                                <li> <a href="{{path('userprofile') }}"><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">My profile</a></li>
+                                <li><a href="{{path('review') }}"><img src="{{ asset('bundles/app/images/icon/icon-review.png') }}" alt="">My reviews</a></li>
+                                <li class="current"><a href="{{path('setting') }}"><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">Settings</a></li>
                                 <li><a href="#"><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Wishlist</a></li>
-                                <li><a href="#"><img src=" {{ asset('bundles/app/images/icon/icon-back.png') }}" alt="">Sign out</a></li>
+                                <li><a href="#"><img src="{{ asset('bundles/app/images/icon/icon-back.png') }}" alt="">Sign out</a></li>
                             </ul>
+
                         </div>
                         <div class="col-md-9">
                             <h2 class="user-profile__title">Settings</h2>

@@ -29,4 +29,22 @@ class hostguestController extends Controller
     {
         return $this->render('GstayguesthostBundle:interface:SettingProfile.html.twig');
     }
+
+    /**
+     * @Route("/review",name="review")
+     */
+    public function ReviewAction()
+    {
+        return $this->render('GstayguesthostBundle:interface:userreview.html.twig');
+    }
+
+    /**
+     * @Route("/listbooking",name="listbooking")
+     */
+    public function ListBookingAction()
+    {
+        return $this->render('GstayguesthostBundle:interface:list.html.twig');
+    }
+
+
 }
