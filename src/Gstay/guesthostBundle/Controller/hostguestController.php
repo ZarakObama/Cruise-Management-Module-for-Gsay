@@ -21,4 +21,12 @@ class hostguestController extends Controller
     {
         return $this->render('GstayguesthostBundle:interface:profile.html.twig');
     }
+
+    /**
+     * @Route("/usersetting",name="setting")
+     */
+    public function SetAction()
+    {
+        return $this->render('GstayguesthostBundle:interface:SettingProfile.html.twig');
+    }
 }

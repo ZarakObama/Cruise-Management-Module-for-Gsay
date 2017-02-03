@@ -3,15 +3,7 @@
 {% block body %}
 
 
-<!-- Preloader -->
-<div id="preloader">
-    <div class="tb-cell">
-        <div id="page-loading">
-            <div></div>
-            <p>Loading</p>
-        </div>
-    </div>
-</div>
+
 <!-- Wrap -->
 <div id="wrap">
     <!-- Header -->
@@ -217,12 +209,13 @@
 
                                     <img src=" {{ asset('bundles/app/images/user/img-1.jpg') }}" alt="">
                                 </p>
+
                             </div>
                             <ul class="user-profile__navigation">
                                 <li><a href="user-booking.html"><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">My Bookings</a></li>
                                 <li><a href="user-profile.html"><img src="  {{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">My profile</a></li>
                                 <li><a href="user-review.html"><img src="{{ asset('bundles/app/images/icon/icon-review.png') }}" alt="">My reviews</a></li>
-                                <li class="current"><a href="SettingProfile.html.twig"><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">Settings</a></li>
+                                <li class="current"><a href="{{ path('setting') }}"><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">Settings</a></li>
                                 <li><a href="#"><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Wishlist</a></li>
                                 <li><a href="#"><img src=" {{ asset('bundles/app/images/icon/icon-back.png') }}" alt="">Sign out</a></li>
                             </ul>
