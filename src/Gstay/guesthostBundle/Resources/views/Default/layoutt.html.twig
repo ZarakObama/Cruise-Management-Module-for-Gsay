@@ -128,13 +128,13 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#" title="">Logements</a>
+                                    <a href="#" title="">Flights</a>
                                     <ul class="sub-menu">
                                         <li>
-                                            <a href="home-flight.html" title="">maison</a>
+                                            <a href="home-flight.html" title="">Flights</a>
                                         </li>
                                         <li>
-                                            <a href="flight-list.html">appartement</a>
+                                            <a href="flight-list.html">Flight List</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -190,34 +190,13 @@
                                 <li>
 
 
-                                    {% if app.user   %}
-                                        <a href="#" title="">Profile/Logout</a>
+                                        {% if app.user   %}
+                                            <a href="{{ path("fos_user_profile_show") }}" > profile</a>
 
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="{{ path("fos_user_profile_show") }}" >Profile</a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ path("fos_user_security_logout") }}" >Logout</a>
-                                            </li>
-                                        </ul>
+                                        {% else %}
+                                            <a href="{{ path("fos_user_security_login") }}" >login/register</a>
 
-
-
-                                    {% else %}
-                                        <a href="#" title="">login/register</a>
-
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="{{ path("fos_user_security_login") }}" >login</a>
-                                            </li>
-                                            <li>
-                                                <a href="{{ path("fos_user_registration_register") }}" >register</a>
-                                            </li>
-                                        </ul>
-
-
-                                    {% endif %}
+                                        {% endif %}
 
                                 </li>
 
@@ -231,10 +210,10 @@
     </header>
     <!-- End Header -->
 
-    {% block body %}
-        <!-- Wrap -->
+{% block body %}
+<!-- Wrap -->
 
-    {% endblock body %}
+{% endblock %}
     <!-- Footer -->
     <footer>
         <div class="container">

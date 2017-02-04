@@ -1,0 +1,255 @@
+{% extends 'base.html.twig' %}
+{% block title %} mes bookcking {% endblock %}
+{% block body %}
+
+
+    <!--Banner-->
+    <section class="sub-banner">
+        <!--Background-->
+        <div class="bg-parallax bg-1"></div>
+        <!--End Background-->
+        <!-- Logo -->
+        <div class="logo-banner text-center">
+            <a href="" title="">
+                <img src="images/logo-banner.png" alt="">
+            </a>
+        </div>
+        <!-- Logo -->
+    </section>
+    <!--End Banner-->
+
+    <!-- Main -->
+    <div class="main">
+        <div class="container">
+            <div class="main-cn element-page bg-white clearfix">
+                <!--Breakcrumb-->
+                <section class="breakcrumb-sc">
+                    <ul class="breadcrumb arrow">
+                        <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+                        <li>User Profile</li>
+                    </ul>
+                </section>
+                <!--End Breakcrumb-->
+
+                <section class="user-profile">
+                    <div class="row">
+
+                            <div class="col-md-3">
+                                <div class="user-profile__header">
+                                    <h4>Sarah Brown</h4>
+                                    <span>Member Sincen May 2012</span>
+                                    <p>
+
+                                        <img src="{{ asset('bundles/app/images/user/img-1.jpg') }}" alt="">
+                                    </p>
+                                </div>
+
+                                <ul class="user-profile__navigation">
+                                    <li class="current"><a href="{{path('listbooking') }}"><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">My Bookings</a></li>
+                                    <li ><a href="{{path('userprofile') }}"><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">My profile</a></li>
+                                    <li><a href="{{path('review') }}"><img src="{{ asset('bundles/app/images/icon/icon-review.png') }}" alt="">My reviews</a></li>
+                                    <li><a href="{{path('setting') }}"><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">Settings</a></li>
+                                    <li><a href="#"><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Wishlist</a></li>
+                                    <li><a href="#"><img src="{{ asset('bundles/app/images/icon/icon-back.png') }}" alt="">Sign out</a></li>
+                                </ul>
+                        </div>
+                        <div class="col-md-9">
+                            <h2 class="user-profile__title">My Bookings</h2>
+                            <div class="user-profile__count-number">
+                                    <span>
+                                        2580
+                                        <samp>Miles</samp>
+                                    </span>
+                                <span>
+                                        5
+                                        <samp>Counrftries</samp>
+                                    </span>
+                                <span>
+                                        21
+                                        <samp>Cityes</samp>
+                                    </span>
+                                <span>
+                                        15
+                                        <samp>Trips</samp>
+                                    </span>
+                            </div>
+                            <ul class="user-profile__total">
+                                <li class="has-number">Total Bookings(<span>5</span>)</li>
+                                <li>Upcoming(<span>0</span>)</li>
+                                <li>Departed(<span>0</span>)</li>
+                                <li>Cancelled(0)</li>
+                            </ul>
+                            <div class="user-profile__my-booking table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Title</th>
+                                        <th>Location</th>
+                                        <th>Order Date</th>
+                                        <th>Execution Date</th>
+                                        <th>Cost</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tr>
+                                        <td>
+                                            <div class="icon">
+                                                <img src="images/icon/icon-flight.png" alt="">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            London to New York City
+                                        </td>
+                                        <td>
+                                            New York City
+                                        </td>
+                                        <td>
+                                            30/4/2015
+                                        </td>
+                                        <td>
+                                            2/5/2015
+                                        </td>
+                                        <td>
+                                            $350
+                                        </td>
+                                        <td>
+                                            <a href="#">Cancel</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="icon">
+                                                <img src="images/icon/icon-hotel.png" alt="">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            InterContinental New York Barclay
+                                        </td>
+                                        <td>
+                                            New York City
+                                        </td>
+                                        <td>
+                                            30/4/2015
+                                        </td>
+                                        <td>
+                                            30/4/2015 <i class="fa fa-arrow-right"></i>  2/5/2015
+                                        </td>
+                                        <td>
+                                            $350
+                                        </td>
+                                        <td>
+                                            <a href="#">Cancel</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="icon">
+                                                <img src="images/icon/icon-car.png" alt="">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            London to New York City
+                                        </td>
+                                        <td>
+                                            New York City
+                                        </td>
+                                        <td>
+                                            30/4/2015
+                                        </td>
+                                        <td>
+                                            2/5/2015
+                                        </td>
+                                        <td>
+                                            $350
+                                        </td>
+                                        <td>
+                                            <a href="#">Cancel</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="icon">
+                                                <img src="images/icon/icon-package.png" alt="">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            London to New York City
+                                        </td>
+                                        <td>
+                                            New York City
+                                        </td>
+                                        <td>
+                                            30/4/2015
+                                        </td>
+                                        <td>
+                                            2/5/2015
+                                        </td>
+                                        <td>
+                                            $350
+                                        </td>
+                                        <td>
+                                            <a href="#">Cancel</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="icon">
+                                                <img src="images/icon/icon-cruise.png" alt="">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            London to New York City
+                                        </td>
+                                        <td>
+                                            New York City
+                                        </td>
+                                        <td>
+                                            30/4/2015
+                                        </td>
+                                        <td>
+                                            2/5/2015
+                                        </td>
+                                        <td>
+                                            $350
+                                        </td>
+                                        <td>
+                                            <a href="#">Cancel</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="icon">
+                                                <img src="images/icon/icon-beach.png" alt="">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            London to New York City
+                                        </td>
+                                        <td>
+                                            New York City
+                                        </td>
+                                        <td>
+                                            30/4/2015
+                                        </td>
+                                        <td>
+                                            2/5/2015
+                                        </td>
+                                        <td>
+                                            $350
+                                        </td>
+                                        <td>
+                                            <a href="#">Cancel</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- End Main -->
+
+{% endblock %}
