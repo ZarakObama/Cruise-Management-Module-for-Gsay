@@ -7,7 +7,7 @@
  */
 
 namespace Gstay\hotelBundle\entity;
-namespace AppBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
@@ -21,7 +21,7 @@ class language
      */
     private $id;
     /**
-     * @ORM\OneToOne(targetEntity="Hotel", inversedBy="language")
+     * @ORM\OneToOne(targetEntity="Hotel")
      * @ORM\JoinColumn(name="id_hotel", referencedColumnName="id")
      */
     private $id_hotel ;

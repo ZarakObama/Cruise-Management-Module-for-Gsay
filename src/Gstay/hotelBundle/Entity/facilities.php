@@ -7,7 +7,7 @@
  */
 
 namespace Gstay\hotelBundle\entity;
-namespace AppBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,7 +22,7 @@ class facilities
      */
     private $id;
     /**
-     * @ORM\OneToOne(targetEntity="Hotel", inversedBy="facilities")
+     * @ORM\OneToOne(targetEntity="Hotel")
      * @ORM\JoinColumn(name="id_hotel", referencedColumnName="id")
      */
     private $id_hotel ;
