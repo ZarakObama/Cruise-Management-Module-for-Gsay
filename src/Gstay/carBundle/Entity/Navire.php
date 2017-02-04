@@ -20,7 +20,15 @@ class Navire
 * @ORM\Id
 * @ORM\Column(type="integer")
 */
-    private $id ;
+private $id ;
+
+    /**
+     * @ORM\OneToOne(targetEntity="ProfileCroisiere",)
+     * @ORM\JoinColumn(name="id_navire", referencedColumnName="id")
+     */
+    private $id_profile ;
+
+
 
     /**
      * @return mixed

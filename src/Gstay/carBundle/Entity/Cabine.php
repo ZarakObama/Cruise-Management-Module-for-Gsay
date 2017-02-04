@@ -25,7 +25,7 @@ class Cabine
  */
     private $id ;
     /**
-     * @ORM\ManyToOne(targetEntity="navire", inversedBy="cabine")
+     * @ORM\OneToOne(targetEntity="navire")
      * @ORM\JoinColumn(name="id_navire", referencedColumnName="id")
      */
     public $id_navire;
@@ -73,6 +73,26 @@ class Cabine
      * @ORM\Column(type="boolean")
      */
     private $dressing ;
+
+    /**
+     * @return mixed
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * @param mixed $prix
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+    }
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $prix;
 
     /**
      * @return mixed
