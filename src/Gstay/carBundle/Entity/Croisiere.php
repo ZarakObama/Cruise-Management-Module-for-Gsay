@@ -25,15 +25,11 @@ class Croisiere
      */
     private $id ;
     /**
- * @ORM\OneToOne(targetEntity="navire", inversedBy="Croisiere")
+ * @ORM\OneToOne(targetEntity="navire")
  * @ORM\JoinColumn(name="id_navire", referencedColumnName="id")
  */
     public $id_navire;
-    /**
-     * @ORM\ManyToOne(targetEntity="cabine", inversedBy="Croisiere")
-     * @ORM\JoinColumn(name="id_cabine", referencedColumnName="id")
-     */
-    public $id_cabine;
+
     /**
      * @ORM\Column(type="integer")
      */
