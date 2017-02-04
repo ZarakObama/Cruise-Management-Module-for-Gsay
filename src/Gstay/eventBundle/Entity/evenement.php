@@ -1,6 +1,7 @@
 <?php
+
 namespace Gstay\eventBundle\Entity;
-namespace AppBundle\Entity;
+use AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM ;
 /**
  * Created by PhpStorm.
@@ -22,7 +23,7 @@ class evenement
     private $id ;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="evenement")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="evenement")
      * @ORM\JoinColumn(name="id_organisateur", referencedColumnName="id")
      */
     private $id_organisateur ;

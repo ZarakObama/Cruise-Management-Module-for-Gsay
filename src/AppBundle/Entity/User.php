@@ -19,9 +19,31 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\Column(type="string",columnDefinition="ENUM('organisateur', 'hostguest','hotel','rent')")
+     */
+    private $type;
+
     public function __construct()
     {
         parent::__construct();
         // your own logic
     }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
 }
