@@ -1,6 +1,6 @@
 <?php
-namespace Gstay\hotelBundle\entity;
-namespace AppBundle\Entity;
+namespace Gstay\hotelBundle\Entity;
+
 /**
  * Created by PhpStorm.
  * User: admin
@@ -20,7 +20,7 @@ class Hotel
      */
     private $id;
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="Hotel")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      */
     private $id_user ;
