@@ -20,7 +20,7 @@ class Hotel
      */
     private $id;
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="Hotel")
+     * @ORM\OneToOne(targetEntity="User")
      * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      */
     private $id_user ;
