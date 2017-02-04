@@ -20,4 +20,14 @@ class hotelController extends Controller
     {
         return $this->render('GstayhotelBundle:Default:index.html.twig');
     }
+    /**
+     * @Route("/hotel_list",name="hotel_list")
+     */
+    /**
+     * @return mixed
+     */
+    public function hotel_listAction()
+    {
+        return $this->render('GstayhotelBundle:pages:hotel_list.html.twig');
+    }
 }
