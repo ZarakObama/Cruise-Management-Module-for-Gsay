@@ -2,14 +2,24 @@
 {% block title %} Hotel X {% endblock %}
 {% block body %}
     <!--Banner-->
-
+    <section class="sub-banner">
+        <!--Background-->
+        <div class="bg-parallax bg-1"></div>
+        <!--End Background-->
+        <!-- Logo -->
+        <div class="logo-banner text-center">
+            <a href="" title="">
+                <img src="images/logo-banner.png" alt="">
+            </a>
+        </div>
+        <!-- Logo -->
+    </section>
     <!--End Banner-->
 
     <!-- Main -->
     <div class="main main-dt">
         <div class="container">
             <div class="main-cn bg-white clearfix">
-
                 <!-- Breakcrumb -->
                 <section class="breakcrumb-sc">
                     <ul class="breadcrumb arrow">
@@ -91,7 +101,6 @@
                     <!-- End Thumnail Image -->
                 </section>
                 <!-- End Detail Slide -->
-
                 <!-- Hotel Content One -->
                 <section class="hotel-content detail-cn" id="hotel-content">
                     <div class="row">
@@ -212,33 +221,9 @@
                                 <a href="#review-detail" title="">Reviews</a>
                             </div>
                         </div>
-                        <div class="col-lg-9 check-rates-cn">
+                        <div class="col-lg-9 ">
 
                             <!-- Form Check Hotel Availability -->
-                            <div class="check-rates-form">
-                                <h3>Enter dates to see prices and availability</h3>
-                                <div class="form-search clearfix">
-                                    <div class="form-field field-date">
-                                        <input type="text" class="field-input calendar-input" placeholder="Check in">
-                                    </div>
-                                    <div class="form-field field-date">
-                                        <input type="text" class="field-input calendar-input" placeholder="Check out">
-                                    </div>
-                                    <div class="form-field field-select">
-                                        <div class="select">
-                                            <span>Guest</span>
-                                            <select>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-submit">
-                                        <button type="submit" class="awe-btn awe-btn-4 arrow-right awe-btn-medium">Update</button>
-                                    </div>
-                                </div>
-                            </div>
                             <!-- Form Check Hotel Availability -->
 
                             <div class="service-check-rate">
@@ -279,57 +264,16 @@
                                 </div>
                             </div>
 
+                            <!-- Form Check Hotel Availability -->
+
+
+
                             <!-- Hotel Availability -->
-                            <div class="hl-availability">
-                                <div class="table-responsive">
-                                    <table class="table table-availability">
-                                        <tr>
-                                            <th>Offers</th>
-                                            <th>Rate <span>(/night)</span></th>
-                                            <th>
-                                                No. Rooms
-                                            </th>
-                                            <th></th>
-                                        </tr>
 
-                                        <tr>
-                                            <td class="avai-td-text">
-                                                <figure>
-                                                    <img src={{ asset('bundles/app/images/hotel/img-1.jpg') }} alt="">
-                                                </figure>
-                                                <h3>Offre Louisiana Dom Tek</h3>
-                                                <p>Double or twin beds, en-suite bathrooms, a large living</p>
-                                                <a href="popup/popup-room.html" class="a-popup-room">more info</a>
-                                            </td>
-                                            <td class="avai-td-price">
-                                                <span class="price">$345<small>/night</small></span>
-                                            </td>
-                                            <td class="avai-td-room">
-                                                <div class="select">
-                                                    <span data-placeholder="select room">1 room</span>
-                                                    <select name="room">
-                                                        <option value="1">1 room</option>
-                                                        <option selected value="1">2 room</option>
-                                                        <option value="1">3 room</option>
-                                                        <option value="1">4 room</option>
-                                                    </select>
-                                                </div>
-                                            </td>
-                                            <td class="avai-td-book">
-                                                <a href="" class="awe-btn awe-btn-1 awe-btn-small">Book</a>
-                                            </td>
-                                        </tr>
-
-
-                                    </table>
-                                </div>
-                            </div>
                             <!-- Hotel Availability -->
                         </div>
                     </div>
                 </section>
-                <!-- End Check Rates -->
-
                 <!-- Hotel Features -->
                 <section class="hl-features detail-cn" id="hl-features">
                     <div class="row">
@@ -493,6 +437,7 @@
                             </div>
                         </div>
 
+
                     </div>
                 </section>
                 <!-- End Details-Policies -->
@@ -534,6 +479,7 @@
                     </div>
                 </section>
                 <!-- End About Area -->
+
 
                 <!-- Hotel Detail Reviews -->
                 <section class="review-detail detail-cn" id="review-detail">
@@ -757,6 +703,8 @@
                         </div>
                     </div>
                 </section>
+
+                <script type="text/javascript" src="js/library/SmoothScroll.js"></script>
             </div>
         </div>
     </div>
