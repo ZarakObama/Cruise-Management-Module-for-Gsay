@@ -45,6 +45,22 @@ class Hotel
      */
     private $date_built;
     /**
+     * @ORM\Column(type="date")
+     */
+    private $date_inscrit;
+    /**
+     * @ORM\Column(type="string",length=255)
+     */
+    private $country;
+    /**
+     * @ORM\Column(type="string",length=255)
+     */
+    private $gouvernorat;
+    /**
+     * @ORM\Column(type="string",length=255)
+     */
+    private $adresse;
+    /**
      * @ORM\Column(type="string",length=255)
      */
     private $description;
@@ -235,6 +251,70 @@ class Hotel
     public function setMatriculeFiscale($matricule_fiscale)
     {
         $this->matricule_fiscale = $matricule_fiscale;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateInscrit()
+    {
+        return $this->date_inscrit;
+    }
+
+    /**
+     * @param mixed $date_inscrit
+     */
+    public function setDateInscrit($date_inscrit)
+    {
+        $this->date_inscrit = $date_inscrit;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param mixed $country
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGouvernorat()
+    {
+        return $this->gouvernorat;
+    }
+
+    /**
+     * @param mixed $gouvernorat
+     */
+    public function setGouvernorat($gouvernorat)
+    {
+        $this->gouvernorat = $gouvernorat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * @param mixed $adresse
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
     }
 
 
