@@ -43,6 +43,14 @@ class hotelController extends Controller
         return $this->render('GstayhotelBundle:pages:hotel_list.html.twig',array("Hotel"=>$Hotel));
     }
     /**
+     * @Route("/hotel_detail",name="hotel_detail")
+     */
+    public function hotel_detailAction()
+    {
+        return $this->render('GstayhotelBundle:pages:hotel_detail.html.twig');
+
+    }
+    /**
      * @Route("/hotel_offer_list",name="hotel_offer_list")
      */
     public function hotel_offer_listAction()
@@ -92,7 +100,7 @@ class hotelController extends Controller
     }
 
     /**
-     * @Route("/hotel_profileSettings", name="hotel_profileSettings")
+     * @Route("/hotel_ProfileSettings", name="hotel_ProfileSettings")
      */
     public function hotel_profilSettingsAction(Request $request)
     {
@@ -157,7 +165,7 @@ class hotelController extends Controller
             return $response;
         }
 
-        return $this->render('GstayhotelBundle:Hotel:SettingHotelProfile.html.twig',array(
+        return $this->render('GstayhotelBundle:pages:SettingsProfileHotel.html.twig',array(
             'form1'=>$form1->createView(),
             'form'=>$form->createView(),
             'Hotel'=>$Hotel

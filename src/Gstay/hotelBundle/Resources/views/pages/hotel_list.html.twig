@@ -1,6 +1,18 @@
 {% extends 'base.html.twig' %}
 {% block title %} Hotels {% endblock %}
 {% block body %}
+    <section class="sub-banner">
+        <!--Background-->
+        <div class="bg-parallax bg-1"></div>
+        <!--End Background-->
+        <!-- Logo -->
+        <div class="logo-banner text-center">
+            <a href="" title="">
+                <img src="images/logo-banner.png" alt="">
+            </a>
+        </div>
+        <!-- Logo -->
+    </section>
 <div class="main">
     <div class="container">
         <div class="main-cn hotel-page bg-white">
@@ -85,7 +97,7 @@
                                     </figure>
                                     <div class="hotel-text">
                                         <div class="hotel-name">
-                                            <a href="hotel-detail.html" title="">{{ Hotel.name }}</a>
+                                            <a href="{{ path("hotel_detail") }}" title="">{{ Hotel.name }}</a>
                                         </div>
                                         <div class="hotel-places">
                                             <a href="" title="">
@@ -115,12 +127,12 @@
 
                                             </a>,
 
-                                            <a href="" title="">{{ Hotel.phone }}</a>
+                                            <a href="" title="">{{ Hotel.country }}</a>
                                         </div>
                                         <hr class="hr">
                                         <div class="price-box">
-                                            <span class="price old-price">{{ Hotel.name }}</span>
-                                            <span class="price special-price">{{ Hotel.id }}<small></small></span>
+                                            <span class="price old-price">{{ Hotel.gouvernorat }} , {{ Hotel.adresse }} </span>
+                                            <span class="price special-price">172$<small></small></span>
                                         </div>
                                     </div>
                                 </div>
