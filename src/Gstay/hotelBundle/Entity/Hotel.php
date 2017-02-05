@@ -43,7 +43,7 @@ class Hotel
     /**
      * @ORM\Column(type="date",nullable=true)
      */
-    private $date_built;
+    private $dateBuilt;
     /**
      * @ORM\Column(type="date")
      */
@@ -191,16 +191,18 @@ class Hotel
      */
     public function getDateBuilt()
     {
-        return $this->date_built;
+        return $this->dateBuilt;
     }
 
     /**
-     * @param mixed $date_built
+     * @param mixed $dateBuilt
      */
-    public function setDateBuilt($date_built)
+    public function setDateBuilt($dateBuilt)
     {
-        $this->date_built = $date_built;
+        $this->dateBuilt = $dateBuilt;
     }
+
+
 
     /**
      * @return mixed
