@@ -26,6 +26,16 @@ class hotelController extends Controller
      */
     public function hotel_listAction()
     {
-        return $this->render('GstayhotelBundle:pages:hotel_list.html.twig');
+        $em=$this->getDoctrine()->getManager();
+        $Hotel=$em->getRepository("GstayhotelBundle:Hotel")->findAll();
+        return $this->render('GstayhotelBundle:pages:hotel_list.html.twig',array("Hotel"=>$Hotel));
+    }
+    /**
+     * @Route("/hotel_offer_list",name="hotel_offer_list")
+     */
+    public function hotel_offer_listAction()
+    {
+        return $this->render('GstayhotelBundle:pages:hotel_offer_list.html.twig');
+
     }
 }

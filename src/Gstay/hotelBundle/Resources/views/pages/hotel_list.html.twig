@@ -60,7 +60,7 @@
                             <!-- View by -->
                             <div class="view-by float-right">
                                 <ul>
-                                    <li><a href="hotel-list.html" title="" class="current"><img src="images/icon-grid.png" alt=""></a></li>
+                                    <li><i class="fa fa-list-ul" aria-hidden="true"><a href="hotel-list.html" title="" class="current"></a></i></li>
                                     <li><a href="hotel-list-2.html" title=""><img src="images/icon-list.png" alt=""></a></li>
                                     <li><a href="hotel-maps.html" title=""><img src="images/icon-map.png" alt=""></a></li>
                                 </ul>
@@ -72,6 +72,7 @@
                         <!-- Hotel Grid Content-->
                         <div class="hotel-grid-cn clearfix">
                             <!-- Hotel Item -->
+                            {% for Hotel in Hotel %}
                             <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4">
                                 <div class="hotel-item">
                                     <figure class="hotel-img">
@@ -84,329 +85,56 @@
                                     </figure>
                                     <div class="hotel-text">
                                         <div class="hotel-name">
-                                            <a href="hotel-detail.html" title="">Copley Square Hotel</a>
+                                            <a href="hotel-detail.html" title="">{{ Hotel.name }}</a>
                                         </div>
                                         <div class="hotel-places">
-                                            <a href="" title="">Boston</a>,
-                                            <a href="" title="">Massachusetts</a>
+                                            <a href="" title="">
+                                                {% if (Hotel.stars == 4) %} <!--no star-->
+                                                    <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                {% elseif (Hotel.stars) == 3 %}<!--one star-->
+                                                    <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                {% elseif (Hotel.stars) == 2 %}<!--one star-->
+                                                    <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                {% elseif (Hotel.stars) == 1 %}<!--one star-->
+                                                    <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                {% elseif (Hotel.stars) == 5 %}<!--one star-->
+                                                    <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+
+
+                                                {% endif %}
+
+                                            </a>,
+
+                                            <a href="" title="">{{ Hotel.phone }}</a>
                                         </div>
                                         <hr class="hr">
                                         <div class="price-box">
-                                            <span class="price old-price">From</span>
-                                            <span class="price special-price">$175<small>/night</small></span>
+                                            <span class="price old-price">{{ Hotel.name }}</span>
+                                            <span class="price special-price">{{ Hotel.id }}<small></small></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                                {% endfor %}
                             <!-- End Hotel Item -->
-                            <!-- Hotel Item -->
-                            <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4">
-                                <div class="hotel-item">
-                                    <figure class="hotel-img">
-                                        <a href="hotel-detail.html" title="">
-                                            <img src="images/deal/img-2.jpg" alt="">
-                                        </a>
-                                        <figcaption>
-                                            Save <span>30</span>%
-                                        </figcaption>
-                                    </figure>
-                                    <div class="hotel-text">
-                                        <div class="hotel-name">
-                                            <a href="hotel-detail.html" title="">Grand Hotel Bagni Nuovi</a>
-                                        </div>
-                                        <div class="hotel-places">
-                                            <a href="" title="">Boston</a>,
-                                            <a href="" title="">Massachusetts</a>
-                                        </div>
-                                        <hr class="hr">
-                                        <div class="price-box">
-                                            <span class="price old-price">From</span>
-                                            <span class="price special-price">$175<small>/night</small></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Hotel Item -->
-                            <!-- Hotel Item -->
-                            <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4">
-                                <div class="hotel-item">
-                                    <figure class="hotel-img">
-                                        <a href="hotel-detail.html" title="">
-                                            <img src="images/deal/img-6.jpg" alt="">
-                                        </a>
-                                        <figcaption>
-                                            Save <span>30</span>%
-                                        </figcaption>
-                                    </figure>
-                                    <div class="hotel-text">
-                                        <div class="hotel-name">
-                                            <a href="hotel-detail.html" title="">Melia White House Hotel</a>
-                                        </div>
-                                        <div class="hotel-places">
-                                            <a href="" title="">Boston</a>,
-                                            <a href="" title="">Massachusetts</a>
-                                        </div>
-                                        <hr class="hr">
-                                        <div class="price-box">
-                                            <span class="price old-price">From</span>
-                                            <span class="price special-price">$175<small>/night</small></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Hotel Item -->
-                            <!-- Hotel Item -->
-                            <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4">
-                                <div class="hotel-item">
-                                    <figure class="hotel-img">
-                                        <a href="hotel-detail.html" title="">
-                                            <img src="images/deal/img-1.jpg" alt="">
-                                        </a>
-                                        <figcaption>
-                                            Save <span>30</span>%
-                                        </figcaption>
-                                    </figure>
-                                    <div class="hotel-text">
-                                        <div class="hotel-name">
-                                            <a href="hotel-detail.html" title="">A Hidden NYC Mystery Hotel</a>
-                                        </div>
-                                        <div class="hotel-places">
-                                            <a href="" title="">Boston</a>,
-                                            <a href="" title="">Massachusetts</a>
-                                        </div>
-                                        <hr class="hr">
-                                        <div class="price-box">
-                                            <span class="price old-price">From</span>
-                                            <span class="price special-price">$175<small>/night</small></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Hotel Item -->
-                            <!-- Hotel Item -->
-                            <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4">
-                                <div class="hotel-item">
-                                    <figure class="hotel-img">
-                                        <a href="hotel-detail.html" title="">
-                                            <img src="images/deal/img-2.jpg" alt="">
-                                        </a>
-                                        <figcaption>
-                                            Save <span>30</span>%
-                                        </figcaption>
-                                    </figure>
-                                    <div class="hotel-text">
-                                        <div class="hotel-name">
-                                            <a href="hotel-detail.html" title="">Town Hall Hotel</a>
-                                        </div>
-                                        <div class="hotel-places">
-                                            <a href="" title="">Boston</a>,
-                                            <a href="" title="">Massachusetts</a>
-                                        </div>
-                                        <hr class="hr">
-                                        <div class="price-box">
-                                            <span class="price old-price">From</span>
-                                            <span class="price special-price">$175<small>/night</small></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Hotel Item -->
-                            <!-- Hotel Item -->
-                            <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4">
-                                <div class="hotel-item">
-                                    <figure class="hotel-img">
-                                        <a href="hotel-detail.html" title="">
-                                            <img src="images/deal/img-6.jpg" alt="">
-                                        </a>
-                                        <figcaption>
-                                            Save <span>30</span>%
-                                        </figcaption>
-                                    </figure>
-                                    <div class="hotel-text">
-                                        <div class="hotel-name">
-                                            <a href="hotel-detail.html" title="">Melia White House Hotel</a>
-                                        </div>
-                                        <div class="hotel-places">
-                                            <a href="" title="">Boston</a>,
-                                            <a href="" title="">Massachusetts</a>
-                                        </div>
-                                        <hr class="hr">
-                                        <div class="price-box">
-                                            <span class="price old-price">From</span>
-                                            <span class="price special-price">$175<small>/night</small></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Hotel Item -->
-                            <!-- Hotel Item -->
-                            <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4">
-                                <div class="hotel-item">
-                                    <figure class="hotel-img">
-                                        <a href="hotel-detail.html" title="">
-                                            <img src="images/deal/img-1.jpg" alt="">
-                                        </a>
-                                        <figcaption>
-                                            Save <span>30</span>%
-                                        </figcaption>
-                                    </figure>
-                                    <div class="hotel-text">
-                                        <div class="hotel-name">
-                                            <a href="hotel-detail.html" title="">Copley Square Hotel</a>
-                                        </div>
-                                        <div class="hotel-places">
-                                            <a href="" title="">Boston</a>,
-                                            <a href="" title="">Massachusetts</a>
-                                        </div>
-                                        <hr class="hr">
-                                        <div class="price-box">
-                                            <span class="price old-price">From</span>
-                                            <span class="price special-price">$175<small>/night</small></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Hotel Item -->
-                            <!-- Hotel Item -->
-                            <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4">
-                                <div class="hotel-item">
-                                    <figure class="hotel-img">
-                                        <a href="hotel-detail.html" title="">
-                                            <img src="images/deal/img-2.jpg" alt="">
-                                        </a>
-                                        <figcaption>
-                                            Save <span>30</span>%
-                                        </figcaption>
-                                    </figure>
-                                    <div class="hotel-text">
-                                        <div class="hotel-name">
-                                            <a href="hotel-detail.html" title="">Grand Hotel Bagni Nuovi</a>
-                                        </div>
-                                        <div class="hotel-places">
-                                            <a href="" title="">Boston</a>,
-                                            <a href="" title="">Massachusetts</a>
-                                        </div>
-                                        <hr class="hr">
-                                        <div class="price-box">
-                                            <span class="price old-price">From</span>
-                                            <span class="price special-price">$175<small>/night</small></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Hotel Item -->
-                            <!-- Hotel Item -->
-                            <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4">
-                                <div class="hotel-item">
-                                    <figure class="hotel-img">
-                                        <a href="hotel-detail.html" title="">
-                                            <img src="images/deal/img-6.jpg" alt="">
-                                        </a>
-                                        <figcaption>
-                                            Save <span>30</span>%
-                                        </figcaption>
-                                    </figure>
-                                    <div class="hotel-text">
-                                        <div class="hotel-name">
-                                            <a href="hotel-detail.html" title="">Melia White House Hotel</a>
-                                        </div>
-                                        <div class="hotel-places">
-                                            <a href="" title="">Boston</a>,
-                                            <a href="" title="">Massachusetts</a>
-                                        </div>
-                                        <hr class="hr">
-                                        <div class="price-box">
-                                            <span class="price old-price">From</span>
-                                            <span class="price special-price">$175<small>/night</small></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Hotel Item -->
-                            <!-- Hotel Item -->
-                            <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4">
-                                <div class="hotel-item">
-                                    <figure class="hotel-img">
-                                        <a href="hotel-detail.html" title="">
-                                            <img src="images/deal/img-1.jpg" alt="">
-                                        </a>
-                                        <figcaption>
-                                            Save <span>30</span>%
-                                        </figcaption>
-                                    </figure>
-                                    <div class="hotel-text">
-                                        <div class="hotel-name">
-                                            <a href="hotel-detail.html" title="">A Hidden NYC Mystery Hotel</a>
-                                        </div>
-                                        <div class="hotel-places">
-                                            <a href="" title="">Boston</a>,
-                                            <a href="" title="">Massachusetts</a>
-                                        </div>
-                                        <hr class="hr">
-                                        <div class="price-box">
-                                            <span class="price old-price">From</span>
-                                            <span class="price special-price">$175<small>/night</small></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Hotel Item -->
-                            <!-- Hotel Item -->
-                            <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4">
-                                <div class="hotel-item">
-                                    <figure class="hotel-img">
-                                        <a href="hotel-detail.html" title="">
-                                            <img src="images/deal/img-2.jpg" alt="">
-                                        </a>
-                                        <figcaption>
-                                            Save <span>30</span>%
-                                        </figcaption>
-                                    </figure>
-                                    <div class="hotel-text">
-                                        <div class="hotel-name">
-                                            <a href="hotel-detail.html" title="">Town Hall Hotel</a>
-                                        </div>
-                                        <div class="hotel-places">
-                                            <a href="" title="">Boston</a>,
-                                            <a href="" title="">Massachusetts</a>
-                                        </div>
-                                        <hr class="hr">
-                                        <div class="price-box">
-                                            <span class="price old-price">From</span>
-                                            <span class="price special-price">$175<small>/night</small></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Hotel Item -->
-                            <!-- Hotel Item -->
-                            <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4">
-                                <div class="hotel-item">
-                                    <figure class="hotel-img">
-                                        <a href="hotel-detail.html" title="">
-                                            <img src="images/deal/img-6.jpg" alt="">
-                                        </a>
-                                        <figcaption>
-                                            Save <span>30</span>%
-                                        </figcaption>
-                                    </figure>
-                                    <div class="hotel-text">
-                                        <div class="hotel-name">
-                                            <a href="hotel-detail.html" title="">Melia White House Hotel</a>
-                                        </div>
-                                        <div class="hotel-places">
-                                            <a href="" title="">Boston</a>,
-                                            <a href="" title="">Massachusetts</a>
-                                        </div>
-                                        <hr class="hr">
-                                        <div class="price-box">
-                                            <span class="price old-price">From</span>
-                                            <span class="price special-price">$175<small>/night</small></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Hotel Item -->
+
+
+
+
+
+
+
+
                         </div>
                         <!-- End Hotel Grid Content-->
                         <!-- Page Navigation -->
