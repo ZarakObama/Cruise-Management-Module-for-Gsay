@@ -65,7 +65,7 @@ class hotelController extends Controller
         $em=$this->getDoctrine()->getManager();
         $Hotel = $em->getRepository('GstayhotelBundle:Hotel')->findOneBy(array('id_user' => $id ));
         $newid = $em->getRepository('AppBundle:User')->findOneBy(array('id' => $id ));
-        if(empty($hotel))
+        if(empty($Hotel))
         {
             $Hotel= new Hotel();
 

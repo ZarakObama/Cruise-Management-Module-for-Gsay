@@ -29,7 +29,7 @@ class Hotel
      */
     private $name;
     /**
-     * @ORM\Column(type="float"),nullable=true
+     * @ORM\Column(type="float",nullable=true)
      */
     private $stars;
     /**
@@ -45,9 +45,9 @@ class Hotel
      */
     private $date_built;
     /**
-     * @ORM\Column(type="date",nullable=true)
+     * @ORM\Column(type="date")
      */
-    private $date_inscrit;
+    private $dateInscrit;
     /**
      * @ORM\Column(type="string",length=255,nullable=true)
      */
@@ -56,6 +56,10 @@ class Hotel
      * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $gouvernorat;
+    /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+    private $adresse;
     /**
      * @ORM\Column(type="string",length=255,nullable=true)
      */
@@ -251,16 +255,18 @@ class Hotel
      */
     public function getDateInscrit()
     {
-        return $this->date_inscrit;
+        return $this->dateInscrit;
     }
 
     /**
-     * @param mixed $date_inscrit
+     * @param mixed $dateInscrit
      */
-    public function setDateInscrit($date_inscrit)
+    public function setDateInscrit($dateInscrit)
     {
-        $this->date_inscrit = $date_inscrit;
+        $this->dateInscrit = $dateInscrit;
     }
+
+
 
     /**
      * @return mixed
@@ -292,6 +298,22 @@ class Hotel
     public function setGouvernorat($gouvernorat)
     {
         $this->gouvernorat = $gouvernorat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * @param mixed $adresse
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
     }
 
 
