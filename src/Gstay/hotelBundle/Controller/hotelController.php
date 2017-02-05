@@ -63,28 +63,28 @@ class hotelController extends Controller
         }
 
         $em=$this->getDoctrine()->getManager();
-        $profile = $em->getRepository('GstayeventBundle:profile')->findOneBy(array('id_user' => $id ));
+        $Hotel = $em->getRepository('GstayhotelBundle:Hotel')->findOneBy(array('id_user' => $id ));
         $newid = $em->getRepository('AppBundle:User')->findOneBy(array('id' => $id ));
-        if(empty($profile))
+        if(empty($hotel))
         {
-            $profile= new profile();
+            $Hotel= new Hotel();
 
-            $profile->setIdUser($newid);
-            $profile->setDateInscrit(new \DateTime());
+            $Hotel->setIdUser($newid);
+            $Hotel->setDateInscrit(new \DateTime());
 
-            $em->persist($profile);
+            $em->persist($Hotel);
             $em->flush();
 
-            return $this->render('GstayeventBundle:profile:myProfile.html.twig',array(
-                'profile'=>$profile,
+            return $this->render('GstayhotelBundle:pages:myProfile.html.twig',array(
+                'Hotel'=>$Hotel,
                 'email'=>$email
             ));
         }
 
 
 
-        return $this->render('GstayeventBundle:profile:myProfile.html.twig',array(
-            'profile'=>$profile,
+        return $this->render('GstayhotelBundle:pages:myProfile.html.twig',array(
+            'Hotel'=>$Hotel,
             'email'=>$email
         ));
     }
