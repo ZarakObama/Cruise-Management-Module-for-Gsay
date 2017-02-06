@@ -68,7 +68,7 @@
                                             <a href="{{ path("hotel_list") }}">Hotels</a>
                                         </li>
                                         <li>
-                                            <a href="{{ path("hotel_offer_list") }}">Offers</a>
+                                            <a href="{{ path("promo_list") }}">Offers</a>
                                         </li>
 
                                     </ul>
@@ -248,9 +248,13 @@
 <script type="text/javascript" src="{{ asset('bundles/app/js/library/jquery.ui.touch-punch.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('bundles/app/js/library/jquery.mb.YTPlayer.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('bundles/app/js/library/SmoothScroll.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/app/plugin/ckeditor/ckeditor.js') }}"></script>
 <!-- End Library JS -->
 <!-- Main Js -->
 <script type="text/javascript" src="{{ asset('bundles/app/js/script.js') }}"></script>
 <!-- End Main Js -->
+{% block js  %}
+
+{% endblock js %}
 </body>
 </html>

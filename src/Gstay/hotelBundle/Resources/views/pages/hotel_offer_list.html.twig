@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %} Offers {% endblock %}
 {% block body %}
-    <!--Banner-->
     <section class="sub-banner">
         <!--Background-->
         <div class="bg-parallax bg-1"></div>
@@ -14,7 +13,6 @@
         </div>
         <!-- Logo -->
     </section>
-    <!--End Banner-->
     <div class="main">
         <div class="container">
             <div class="main-cn hotel-page bg-white">
@@ -26,9 +24,10 @@
                         <!-- Breakcrumb -->
                         <section class="breakcrumb-sc">
                             <ul class="breadcrumb arrow">
-                                <li><a href="index.html"><i class="fa fa-building"></i></a></li>
-                                <li><a href="hotel.html" title="">Offers</a></li>
-
+                                <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+                                <li><a href="hotel.html" title="">Hotels</a></li>
+                                <li><a href="#" title="">Europe </a></li>
+                                <li>Netherlands</li>
                             </ul>
                         </section>
                         <!-- End Breakcrumb -->
@@ -73,9 +72,9 @@
                                 <!-- View by -->
                                 <div class="view-by float-right">
                                     <ul>
-                                        <li><i class="fa fa-list-ul" aria-hidden="true"><a href="hotel-list.html" title="" class="current"></a></i></li>
-                                        <li><a href="hotel-list-2.html" title=""><img src="images/icon-list.png" alt=""></a></li>
-                                        <li><a href="hotel-maps.html" title=""><img src="images/icon-map.png" alt=""></a></li>
+                                        <li><a href="{{ path('promo_list') }}" title="" class="current"><img src={{ asset('bundles/app/images/icon-grid.png') }} alt=""></a></li>
+                                        <li><a href="hotel-list-2.html" title=""><img src={{ asset('bundles/app/images/icon-list.png') }} alt=""></a></li>
+                                        <li><a href="hotel-maps.html" title=""><img src={{ asset('bundles/app/images/icon-map.png') }} alt=""></a></li>
                                     </ul>
                                 </div>
                                 <!-- View by -->
@@ -85,32 +84,38 @@
                             <!-- Hotel Grid Content-->
                             <div class="hotel-grid-cn clearfix">
                                 <!-- Hotel Item -->
-                                <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4">
-                                    <div class="hotel-item">
-                                        <figure class="hotel-img">
-                                            <a href="hotel-detail.html" title="">
-                                                <img src="images/deal/img-1.jpg" alt="">
-                                            </a>
-                                            <figcaption>
-                                                Save <span>30</span>%
-                                            </figcaption>
-                                        </figure>
-                                        <div class="hotel-text">
-                                            <div class="hotel-name">
-                                                <a href="hotel-detail.html" title="">Copley Square Hotel</a>
-                                            </div>
-                                            <div class="hotel-places">
-                                                <a href="" title="">Boston</a>,
-                                                <a href="" title="">Massachusetts</a>
-                                            </div>
-                                            <hr class="hr">
-                                            <div class="price-box">
-                                                <span class="price old-price">From</span>
-                                                <span class="price special-price">$175<small>/night</small></span>
+                                {% for promoHotel in promoHotel %}
+                                    <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4">
+                                        <div class="hotel-item">
+                                            <figure class="hotel-img">
+                                                <a href="hotel-detail.html" title="">
+                                                    <img src={{ asset('bundles/app/images/deal/img-1.jpg') }} alt="">
+                                                </a>
+                                                <figcaption>
+                                                    Save <span>{{ promoHotel.pourcentage }}</span>%
+                                                </figcaption>
+                                            </figure>
+                                            <div class="hotel-text">
+                                                <div class="hotel-name">
+                                                    <a href="{{ path("hotel_detail") }}" title="">{{ promoHotel.name }}</a>
+                                                </div>
+                                                <div class="hotel-places">
+                                                    <a href="" title="">
+
+
+                                                    </a>,
+
+                                                    <a href="" title="">{{ promoHotel.getnbrChambres() }}</a>
+                                                </div>
+                                                <hr class="hr">
+                                                <div class="price-box">
+                                                    <span class="price old-price">{{ promoHotel.getnbrChambres() }} , {{ promoHotel.getnbrChambres() }} </span>
+                                                    <span class="price special-price">172$<small></small></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                {% endfor %}
                                 <!-- End Hotel Item -->
 
 
