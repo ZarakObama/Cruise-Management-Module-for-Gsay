@@ -38,8 +38,8 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="user-profile__header">
-                                <h4>{{ profile.nom }}_{{ profile.prenom }}</h4>
-                                <span>Member Sincen {{ profile.dateInscrit | date('M') }} {{ profile.dateInscrit | date('Y') }}</span>
+                                <h4>{{ ProfileCroisiere.nomCompa}}_{{ ProfileCroisiere.nomCompa }}</h4>
+                                <span>Member Sincen {{ ProfileCroisiere.dateInscrit | date('M') }} {{ ProfileCroisiere.dateInscrit | date('Y') }}</span>
                                 <p>
 
                                     <img src="{{ asset('bundles/app/images/user/img-1.jpg') }}" alt="">
@@ -50,7 +50,7 @@
                                 <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">My Bookings</a></li>
                                 <li class="current"><a href=""><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">My profile</a></li>
                                 <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-review.png') }}" alt="">My reviews</a></li>
-                                <li><a href="{{ path('profileEventSetting') }}"><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">Settings</a></li>
+                                <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">Settings</a></li>
                                 <li><a href="#"><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Wishlist</a></li>
                                 <li><a href="{{ path('fos_user_security_logout') }}"><img src="{{ asset('bundles/app/images/icon/icon-back.png') }}" alt="">Sign out</a></li>
                             </ul>
@@ -62,16 +62,47 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h4 class="my-profile__title">Personal Information</h4>
+                                        <h4 class="my-profile__title">Company Information</h4>
                                         <ul>
-                                            <li><span>First Name</span>{{ profile.prenom }}</li>
-                                            <li><span>Last Name</span>{{ profile.nom }}</li>
+                                            <li><span>Company Name</span>{{ ProfileCroisiere.nomCompa }}
+
+                                                &nbsp;
+                                                {% if (ProfileCroisiere.stars == 4) %} <!--no star-->
+                                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                    {% elseif (ProfileCroisiere.stars) == 3 %}<!--one star-->
+                                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                    {% elseif (ProfileCroisiere.stars) == 2 %}<!--one star-->
+                                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                    {% elseif (ProfileCroisiere.stars) == 1 %}<!--one star-->
+                                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                    {% elseif (ProfileCroisiere.stars) == 5 %}<!--one star-->
+                                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+
+
+                                                        {% endif %}</li>
+                                            <li><span>TRN *</span>{{ProfileCroisiere.getMatFisc() }}</li>
+
+                                            <li><span>PiC *</span>{{ ProfileCroisiere.postComp }}</li>
+                                        </ul>
+                                        <br>
+                                        <h4 class="my-profile__title">User Information</h4>
+                                        <ul>
+
+                                            <li><span>First Name</span>{{ ProfileCroisiere.firstName }}</li>
+                                            <li><span>Last Name</span>{{ ProfileCroisiere.lastName }}</li>
                                             <li><span>Email</span>{{ email }}</li>
-                                            <li><span>Phone number</span>{{ profile.tel }}</li>
-                                            <li><span>Company Name</span>{{ .profileprenom }}</li>
-                                            <li><span>tax registration number</span>{{ profile.prenom }}</li>
-                                            <li><span>activity</span>{{ profile.prenom }}</li>
-                                            <li><span>Position in the company</span>{{ profile.prenom }}</li>
+                                            <li><span>Phone number</span>{{ ProfileCroisiere.phoneNum }}</li>
+
 
 
 
@@ -81,13 +112,15 @@
                                     <div class="col-md-6">
                                         <h4 class="my-profile__title">Location</h4>
                                         <ul>
-                                            <li><span>State</span>{{ profile.gouvernerat }}</li>
-                                            <li><span> City</span>{{ profile.cite }}</li>
-                                            <li><span>Street Address</span>{{ profile.rue }}</li>
-                                            <li><span>phone number</span>{{ profile.tel }}</li>
+                                            <li><span>State</span>{{ ProfileCroisiere.state }}</li>
+                                            <li><span> City</span>{{ ProfileCroisiere.city }}</li>
+                                            <li><span>Street Address</span>{{ ProfileCroisiere.streetAdresse }}</li>
+                                            <li><span>phone number</span>{{ ProfileCroisiere.phoneNum }}</li>
 
-                                            <li><span>date of account  </span>{{ profile.dateInscrit | date('y/m/d') }}</li>
+                                            <li><span>date of account  </span>{{ ProfileCroisiere.dateInscrit | date('y/m/d') }}</li>
                                         </ul>
+                                        <p> * TRN :  tax registration number <br> * PiC : Position in the company</br>
+
                                     </div>
                                 </div>
 
@@ -96,7 +129,7 @@
                                 </p>
 
 
-                                <a href="{{ path('profileEventSetting') }}" class="btn">Edit profile</a>
+                                <a href="{{ path('cruiser_ProfileSettings') }}" class="btn">Edit profile</a>
 
 
 
