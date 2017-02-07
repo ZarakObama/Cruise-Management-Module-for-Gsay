@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %} Hotel X {% endblock %}
+{% block title %} {{ Hotel.name }}{% endblock %}
 {% block body %}
     <!--Banner-->
     <section class="sub-banner">
@@ -25,8 +25,9 @@
                     <ul class="breadcrumb arrow">
                         <li><a href="index.html"><i class="fa fa-home"></i></a></li>
                         <li><a href="hotel.html" title="">Hotels</a></li>
-                        <li><a href="#" title="">Europe </a></li>
-                        <li>Netherlands</li>
+                        <li><a href="#" title="{{ Hotel.country }}">{{ Hotel.country }} </a></li>
+                        <li>{{ Hotel.gouvernorat }}</li>
+                        <li>{{ Hotel.name }}</li>
                     </ul>
                     <div class="support float-right">
                         <small>Got a question?</small> 123-123-1234
@@ -39,25 +40,40 @@
                     <div class="head-dt-cn">
                         <div class="row">
                             <div class="col-sm-7">
-                                <h1>Grand Plaza Serviced Apartments </h1>
+                                <h1>{{ Hotel.name }}  , {{ Hotel.gouvernorat }}</h1>
                                 <div class="start-address">
-                                        <span class="star">
-                                            <i class="glyphicon glyphicon-star"></i>
-                                            <i class="glyphicon glyphicon-star"></i>
-                                            <i class="glyphicon glyphicon-star"></i>
-                                            <i class="glyphicon glyphicon-star"></i>
-                                            <i class="glyphicon glyphicon-star"></i>
-                                        </span>
+                                    {% if (Hotel.stars == 4) %} <!--no star-->
+                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                    {% elseif (Hotel.stars) == 3 %}<!--one star-->
+                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                    {% elseif (Hotel.stars) == 2 %}<!--one star-->
+                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                    {% elseif (Hotel.stars) == 1 %}<!--one star-->
+                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                    {% elseif (Hotel.stars) == 5 %}<!--one star-->
+                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+                                        <i class="fa fa-star" style ="color:#FFD700" aria-hidden="true"></i>
+
+
+                                    {% endif %}
                                     <address class="address">
-                                        42 Princes Square, London W2 4AD
+                                        {{ Hotel.adresse }},{{ Hotel.gouvernorat }},{{ Hotel.country }}
                                     </address>
 
                                 </div>
                             </div>
                             <div class="col-sm-5 text-right">
                                 <p class="price-book">
-                                    From-<span>$345</span>/night
-                                    <a href="" title="" class="awe-btn awe-btn-1 awe-btn-lager">Book Now</a>
+                                    <a href="" title="" class="awe-btn awe-btn-1 awe-btn-lager">View Offers</a>
                                 </p>
                             </div>
                         </div>
@@ -127,18 +143,7 @@
                                         <a href="" title="">145 Reviews</a>
                                     </div>
                                     <!-- End Tripadvitsor -->
-                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-12">
-                                        <hr class="hr">
 
-                                        <!-- Quote -->
-                                        <blockquote class="quote-sidebar">
-                                            <p>
-                                                Great location tucked behind the Ritz Hotel on Piccadilly. Good value for money. The suite I booked was good.<br>
-                                                <span><b>Daniel Brown</b> - Sweden,  28/3/2013</span>
-                                            </p>
-                                        </blockquote>
-                                        <!-- End Quote -->
-                                    </div>
                                 </div>
                                 <!-- End Vote Text -->
 
@@ -149,57 +154,36 @@
                         </div>
 
                         <!-- Description -->
-                        <div class="col-lg-9 hl-customer-like">
+                        <div class="col-lg-9 customer-like">
 
                             <h2>Why customer like this hotel</h2>
 
-                            <!-- Custom link field -->
-                            <div class="customer-like">
-                                    <span class="cs-like-label">
-                                        Nearest transport
-                                    </span>
-                                <ul>
-                                    <li>Shepherd's Bush (Central) Tube Station (0.5 Km / 6 min walk)</li>
-                                </ul>
-                            </div>
-                            <!-- End Custom link field -->
 
-                            <!-- Custom link field -->
-                            <div class="customer-like">
-                                    <span class="cs-like-label">
-                                        Distance to airport
-                                    </span>
+                            <div class="col-lg-6 hl-customer-like">
+                                <h4 class="my-profile__title">Description</h4>
                                 <ul>
-                                    <li> London Heathrow Airport (17.0 Km)</li>
-                                    <li>London City Airport (18.3 Km)</li>
-                                </ul>
-                            </div>
-                            <!-- End Custom link field -->
+                                    <li><span><strong> Architectural Style </strong>  </span>{{ Hotel.architecture }}</li>
+                                    <li><span><strong> Built In </strong> </span>{{ Hotel.getDateBuilt() | date('y/m/d') }}</li>
+                                    <li><span> <strong> About </strong> </span>{{ Hotel.description }}</li>
 
-                            <!-- Custom link field -->
-                            <div class="customer-like">
-                                    <span class="cs-like-label">
-                                        Nearest transportCustomer comments
-                                    </span>
-                                <ul>
-                                    <li>Comfortable and clean, Friendly staff, Value for money</li>
-                                </ul>
-                            </div>
-                            <!-- End Custom link field -->
 
-                            <!-- Custom link field -->
-                            <div class="customer-like">
-                                    <span class="cs-like-label">
-                                        Top attractions in the area
-                                    </span>
-                                <ul>
-                                    <li>Westfield London (0.9 Km / 11 min walk)</li>
-                                    <li>Natural History Museum (2.6 Km)</li>
-                                    <li>Victoria and Albert Museum (2.9 Km)</li>
-                                    <li>Hyde Park (3.0 Km)</li>
                                 </ul>
                             </div>
-                            <!-- End Custom link field -->
+                            <div class="col-lg-6 hl-customer-like">
+                                <h4 class="my-profile__title">Location</h4>
+                                <ul>
+                                    <li><strong> STATE </strong> {{ Hotel.gouvernorat }}</li>
+                                    <li><strong> Country </strong> {{ Hotel.country }}</li>
+                                    <li><strong> Street Adress </strong> {{ Hotel.adresse }}</li>
+                                    <li><strong> Phone </strong> {{ Hotel.phone }}</li>
+
+
+                                </ul>
+                            </div>
+
+
+
+
 
                         </div>
                         <!-- End Description -->
@@ -457,23 +441,7 @@
                         </div>
                         <div class="col-lg-9">
 
-                            <div class="hotel-detail-map">
-                                <div id="hotel-detail-map" data-latlng="51.5133647,-0.1907375"></div>
-                                <p class="about-area-location"><i class="fa  fa-map-marker"></i>42 Princes Square, London W2 4AD</p>
-                            </div>
-
-                            <div class="about-area-text">
-                                <h2>What to do</h2>
-                                <p>
-                                    <b>Shop.</b> At the quirky Thai Home Industries, troll for stainless steel flatware inspired by upcountry farm tools that are part of the MoMA design collection (35 Oriental Avenue; 662-234-1736).
-                                </p>
-                                <p>
-                                    <b>Thai Done Right.</b> Eat like a spice-loving local at Gallery Café — we love the crispy prawn cakes, <a href="#">Thai tuna salad</a> tossed with slivers of powerful chilies, and succulent chicken wrapped in pandanus leaves (86-100 Soi Captain Bush; 662-639-5580).
-                                </p>
-                                <p>
-                                    <b>Stop and Smell.</b> The fragrant <a href="#">Pak Klong Talaad</a>, is the country’s most important wholesale flower market. The buying and selling frenzy starts around 2 a.m., when boats begin to dock near Memorial Bridge with a cornucopia of fresh flowers including orchids, marigolds, zinnias, jasmine and, of course, roses.
-                                </p>
-                            </div>
+                            <!--MAPS-->
 
                         </div>
                     </div>

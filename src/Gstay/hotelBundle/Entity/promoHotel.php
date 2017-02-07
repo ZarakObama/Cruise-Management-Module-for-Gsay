@@ -6,8 +6,8 @@
  * Time: 23:18
  */
 
-namespace Gstay\hotelBundle\entity;
-
+namespace Gstay\hotelBundle\Entity;
+use Appbundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
@@ -21,44 +21,44 @@ class promoHotel
      */
     private $id;
     /**
-     * @ORM\ManyToOne(targetEntity="Hotel", inversedBy="promoHotel")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="$id_hotel", referencedColumnName="id")
      */
     private $id_hotel ;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $name;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $description;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $photo;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $pourcentage;
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date",nullable=true)
      */
     private $date_begin;
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date",nullable=true)
      */
     private $date_end;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $nbr_chambres;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $nbr_bangalows;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $nbr_suites;
 
