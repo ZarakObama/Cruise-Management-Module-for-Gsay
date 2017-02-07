@@ -51,10 +51,10 @@
 
                             <ul class="user-profile__navigation">
                                 <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">Bookings</a></li>
-                                <li ><a href="{{ path('promo_hotel') }}"><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">Facilities</a></li>
+                                <li class="current"><a href="{{ path('facilities_settings') }}"><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">Facilities</a></li>
                                 <li><a href="{{ path('promo_hotel') }}"><img src="{{ asset('bundles/app/images/icon/icon-review.png') }}" alt="">Manage Offers</a></li>
-                                <li class="current" ><a href="{{ path('hotel_ProfileSettings') }}"><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">Settings</a></li>
-                                <li><a href="#"><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Rooms & Price Tables </a></li>
+                                <li><a href="{{ path('hotel_ProfileSettings') }}"><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">Settings</a></li>
+                                <li><a href="{{ path('room_settings') }}"><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Rooms & Price Tables </a></li>
                                 <li><a href="{{ path('fos_user_security_logout') }}"><img src="{{ asset('bundles/app/images/icon/icon-back.png') }}" alt="">Sign out</a></li>
                             </ul>
                         </div>

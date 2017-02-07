@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+{% block title %} add promo {% endblock %}
+{% block body %}
+
+
+
+    <!-- Wrap -->
+    <div id="wrap">
+
+
+    <!--Banner-->
+    <section class="sub-banner">
+        <!--Background-->
+        <div class="bg-parallax bg-1"></div>
+        <!--End Background-->
+        <!-- Logo -->
+        <div class="logo-banner text-center">
+            <a href="" title="">
+
+                <img src="{{ asset('bundles/app/images/logo-banner.png') }}" alt="">
+            </a>
+        </div>
+        <!-- Logo -->
+    </section>
+    <!--End Banner-->
+
+    <!-- Main -->
+    <div class="main">
+        <div class="container">
+            <div class="main-cn element-page bg-white clearfix">
+                <!--Breakcrumb-->
+                <section class="breakcrumb-sc">
+                    <ul class="breadcrumb arrow">
+                        <li><a href="{{ path('listeventprofile') }}"><i class="fa fa-home"></i></a></li>
+                        <li>Add Event</li>
+                    </ul>
+                </section>
+                <!--End Breakcrumb-->
+
+                <section class="user-profile">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="user-profile__header">
+
+                                <p>
+
+                                    <img src="{{ asset('bundles/app/images/user/img-1.jpg') }}" alt="">
+                                </p>
+                            </div>
+
+                            <ul class="user-profile__navigation">
+                                <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">Bookings</a></li>
+                                <li class="current"><a href="{{ path('facilities_settings') }}"><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">Facilities</a></li>
+                                <li><a href="{{ path('promo_hotel') }}"><img src="{{ asset('bundles/app/images/icon/icon-review.png') }}" alt="">Manage Offers</a></li>
+                                <li><a href="{{ path('hotel_ProfileSettings') }}"><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">Settings</a></li>
+                                <li><a href="{{ path('room_settings') }}"><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Rooms & Price Tables </a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}"><img src="{{ asset('bundles/app/images/icon/icon-back.png') }}" alt="">Sign out</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="col-md-10">
+
+                            <div class="user-form">
+                                <div class="row">
+                                    <h3> Information of your Promo</h3>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h3> Global Information</h3>
+                                        {{ form_start(form)}}
+                                        <div class="field-input">
+                                            <label> Title</label>
+
+                                            {{ form_widget(form.name, {'attr': {'class': 'form-control','placeholder':'Title' }}) }}
+                                        </div>
+
+
+                                        <div class="field-input">
+                                            <label> Promo %</label>
+                                            {{ form_widget(form.pourcentage, {'attr': {'class': 'form-control','placeholder':'pourcentage , % ' }}) }}
+
+                                        </div>
+
+                                        <div class="field-input">
+                                            <label> Planing</label>
+                                            {{ form_widget(form.description, {'attr': {'class': 'ckeditor' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            <label> Date Begin </label>
+                                            {{ form_widget(form.date_begin) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            <label> Date End </label>
+                                            {{ form_widget(form.date_end) }}
+
+                                        </div>
+
+                                        <div class="field-input">
+                                            <button class="awe-btn awe-btn-1 awe-btn-medium">Add Event</button>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3> Rooms Concerned </h3>
+                                        <div class="field-input">
+
+                                            <label> Rooms</label>
+                                            {{ form_widget(form.nbr_chambres, {'attr': {'class': 'form-control','placeholder':'Rooms' }}) }}
+                                        </div>
+                                        <div class="field-input">
+                                            <label> Bangalows</label>
+                                            {{ form_widget(form.nbr_bangalows, {'attr': {'class': 'form-control','placeholder':'Bangalows' }}) }}
+                                        </div>
+                                        <div class="field-input">
+                                            <label> Suites </label>
+                                            {{ form_widget(form.nbr_suites, {'attr': {'class': 'form-control','placeholder':'Suites' }}) }}
+                                        </div>
+                                     </div>
+
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- End Main -->
+
+{% endblock %}
