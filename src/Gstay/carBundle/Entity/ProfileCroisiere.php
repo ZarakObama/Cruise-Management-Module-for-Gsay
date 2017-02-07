@@ -9,7 +9,9 @@
 namespace Gstay\carBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Created by PhpStorm.
@@ -19,6 +21,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 /**
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class ProfileCroisiere
 {
@@ -42,7 +45,7 @@ class ProfileCroisiere
     private $nom_compa;
 
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $mat_fisc;
     /**
@@ -54,6 +57,196 @@ class ProfileCroisiere
      * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $post_comp;
+    /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+    private $first_name;
+    /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+    private $last_name;
+
+    /**
+     * @return mixed
+     */
+    public function getFirstName()
+    {
+        return $this->first_name;
+    }
+
+    /**
+     * @param mixed $first_name
+     */
+    public function setFirstName($first_name)
+    {
+        $this->first_name = $first_name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastName()
+    {
+        return $this->last_name;
+    }
+
+    /**
+     * @param mixed $last_name
+     */
+    public function setLastName($last_name)
+    {
+        $this->last_name = $last_name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param mixed $country
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param mixed $state
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param mixed $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStreetAdresse()
+    {
+        return $this->street_adresse;
+    }
+
+    /**
+     * @param mixed $street_adresse
+     */
+    public function setStreetAdresse($street_adresse)
+    {
+        $this->street_adresse = $street_adresse;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhoneNum()
+    {
+        return $this->phone_num;
+    }
+
+    /**
+     * @param mixed $phone_num
+     */
+    public function setPhoneNum($phone_num)
+    {
+        $this->phone_num = $phone_num;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFax()
+    {
+        return $this->fax;
+    }
+
+    /**
+     * @param mixed $fax
+     */
+    public function setFax($fax)
+    {
+        $this->fax = $fax;
+    }
+    /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+
+    private $country;
+    /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+    private $state;
+    /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+    private $city;
+
+
+    /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+    private $street_adresse;
+    /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+    private $phone_num;
+    /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+    private $fax;
+    /**
+     * @ORM\Column(type="float",nullable=true)
+     */
+    private $stars;
+
+
+    /**
+     * @return mixed
+     */
+    public function getStars()
+    {
+        return $this->stars;
+    }
+
+    /**
+     * @param mixed $stars
+     */
+    public function setStars($stars)
+    {
+        $this->stars = $stars;
+    }
+
+
+    /**
+     * @ORM\Column(type="date",nullable=true)
+     */
+    private $dateInscrit;
 
     /**
      * @return mixed
@@ -122,17 +315,17 @@ class ProfileCroisiere
     /**
      * @return mixed
      */
-    public function getActivité()
+    public function getActivite()
     {
-        return $this->activité;
+        return $this->activite;
     }
 
     /**
-     * @param mixed $activité
+     * @param mixed $activite
      */
-    public function setActivité($activité)
+    public function setActivite($activite)
     {
-        $this->activité = $activité;
+        $this->activite = $activite;
     }
 
     /**
@@ -166,10 +359,79 @@ class ProfileCroisiere
     {
         $this->dateInscrit = $dateInscrit;
     }
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="logo_image", fileNameProperty="imageName")
+     *
+     * @var File
+     */
+    private $imageFile;
 
     /**
-     * @ORM\Column(type="date",nullable=true)
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
      */
-    private $dateInscrit;
+    private $imageName;
 
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     *
+     * @return logo
+     */
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+       return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param string $imageName
+     *
+     * @return logo
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
 }

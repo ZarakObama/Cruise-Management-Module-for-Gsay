@@ -41,8 +41,8 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="user-profile__header">
-                                <h4>{{ profile.nom }}_{{ profile.prenom }}</h4>
-                                <span>Member Sincen {{ profile.dateInscrit | date('M') }} {{ profile.dateInscrit | date('Y') }}</span>
+                                <h4>{{ ProfileCroisiere.nomCompa }}</h4>
+                                <span>Member Sincen {{ ProfileCroisiere.dateInscrit | date('M') }} {{ ProfileCroisiere.dateInscrit | date('Y') }}</span>
                                 <p>
                                 <p>
 
@@ -65,47 +65,78 @@
                             <div class="user-form">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h3>Personal Information</h3>
+
+
+                                        <h3>Company Information</h3>
                                         {{ form_start(form)}}
                                         <div class="field-input">
-                                            {{ form_widget(form.nom, {'attr': {'class': 'input-text','placeholder':'First Name' }}) }}
-
-                                        </div>
-                                        <div class="field-input">
-                                            {{ form_widget(form.prenom, {'attr': {'class': 'input-text','placeholder':'Last Name' }}) }}
-                                        </div>
-
-                                        <div class="field-input">
-                                            {{ form_widget(form.tel, {'attr': {'class': 'input-text','placeholder':'phone number' }}) }}
-
-                                        </div>
-                                        <h3>Location</h3>
-                                        <div class="field-input">
-                                            {{ form_widget(form.gouvernerat, {'attr': {'class': 'input-text','placeholder':'state' }}) }}
-
-                                        </div>
-                                        <div class="field-input">
-                                            {{ form_widget(form.cite, {'attr': {'class': 'input-text','placeholder':'City' }}) }}
-
-                                        </div>
-                                        <div class="field-input">
-                                            {{ form_widget(form.rue, {'attr': {'class': 'input-text','placeholder':'Street' }}) }}
+                                            {{ form_widget(form.nom_compa, {'attr': {'class': 'input-text','placeholder':'Company Name' }}) }}
 
                                         </div>
 
                                         <div class="field-input">
-                                            {{ form_widget(form.codePostal, {'attr': {'class': 'input-text','placeholder':'zip code' }}) }}
+                                            {{ form_widget(form.stars, {'attr': {'class': 'form-control','placeholder':'Stars' }}) }}
+                                        </div>
 
+                                        <div class="field-input">
+                                            {{ form_widget(form.mat_fisc, {'attr': {'class': 'input-text','placeholder':'tax registration number ' }}) }}
 
                                         </div>
+                                        <div class="field-input">
+                                            {{ form_widget(form.post_comp, {'attr': {'class': 'input-text','placeholder':' Your post in the company ' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            {{ form_widget(form.country, {'attr': {'class': 'input-text','placeholder':'Country' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            {{ form_widget(form.state, {'attr': {'class': 'input-text','placeholder':'State' }}) }}
+
+                                        </div>
+
+                                        <div class="field-input">
+                                            {{ form_widget(form.city, {'attr': {'class': 'input-text','placeholder':'City' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            {{ form_widget(form.street_adresse, {'attr': {'class': 'input-text','placeholder':'Street' }}) }}
+
+                                        </div>
+
+
+
                                         <div class="field-input">
                                             {{ form_widget(form.Save, {'attr': {'class': 'awe-btn awe-btn-1 awe-btn-medium' }}) }}
 
 
                                         </div>
-                                        {{ form_end(form) }}
-                                    </div>
+                                        </div>
+
+
+
                                     <div class="col-md-6">
+                                        <h3>User Information</h3>
+
+                                        <div class="field-input">
+                                            {{ form_widget(form.first_name, {'attr': {'class': 'input-text','placeholder':'First Name' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            {{ form_widget(form.last_name, {'attr': {'class': 'input-text','placeholder':'Last Name' }}) }}
+                                        </div>
+
+                                        <div class="field-input">
+                                            {{ form_widget(form.phone_num, {'attr': {'class': 'input-text','placeholder':'phone number' }}) }}
+
+                                        </div>
+
+                                        <div class="field-input">
+                                            {{ form_widget(form.fax, {'attr': {'class': 'input-text','placeholder':'Fax' }}) }}
+
+                                        </div>
+
+                                        {{ form_end(form) }}
                                         <h3>Change Password</h3>
                                         {{ form_start(form1) }}
                                         <div class="field-input">
@@ -122,6 +153,7 @@
                                         </div>
                                         {{ form_end(form1) }}
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         </div>
