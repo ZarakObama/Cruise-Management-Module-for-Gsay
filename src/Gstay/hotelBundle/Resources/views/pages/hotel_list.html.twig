@@ -88,7 +88,7 @@
                             <div class="col-xs-6 col-sm-4 col-md-6 col-lg-4">
                                 <div class="hotel-item">
                                     <figure class="hotel-img">
-                                        <a href="hotel-detail.html" title="">
+                                        <a href="{{ path("hotel_detail",{'id':Hotel.id}) }}" title="">
                                             <img src={{ asset('bundles/app/images/deal/img-1.jpg') }} alt="">
                                         </a>
                                         <figcaption>
@@ -97,7 +97,7 @@
                                     </figure>
                                     <div class="hotel-text">
                                         <div class="hotel-name">
-                                            <a href="{{ path("hotel_detail") }}" title="">{{ Hotel.name }}</a>
+                                            <a href="{{ path("hotel_detail",{'id':Hotel.id}) }}" title="">{{ Hotel.name }}</a>
                                         </div>
                                         <div class="hotel-places">
                                             <a href="" title="">

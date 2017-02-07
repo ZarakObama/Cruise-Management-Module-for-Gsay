@@ -173,4 +173,17 @@ class hotelController extends Controller
         ));
 
     }
+
+
+
+    /**
+     * @Route("/hotel_detail/{id}",name="hotel_detail")
+     */
+    public function hotelDetailAction($id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $Hotel = $em->getRepository('GstayhotelBundle:Hotel')->findOneBy(array('id' => $id ));
+        return $this->render('GstayhotelBundle:pages:hotel_detail.html.twig',array("Hotel"=>$Hotel));
+
+    }
 }
