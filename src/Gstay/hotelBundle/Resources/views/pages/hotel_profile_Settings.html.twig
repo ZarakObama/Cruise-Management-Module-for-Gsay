@@ -76,7 +76,7 @@
                                         </div>
 
                                         <div class="field-input">
-                                            {{ form_widget(form.tel, {'attr': {'class': 'input-text','placeholder':'phone number' }}) }}
+                                            {{ form_widget(form.tel, {'attr': {'class': 'input-text','placeholder':'phone number') }}) }}
 
                                         </div>
                                         <h3>Location</h3>
@@ -132,4 +132,7 @@
     </div>
     <!-- End Main -->
 
+{% endblock %}
+{% block js %}
+<script type= "text/javascript" src = "{{ asset('assests/js/countries.js') }}"></script>
 {% endblock %}
