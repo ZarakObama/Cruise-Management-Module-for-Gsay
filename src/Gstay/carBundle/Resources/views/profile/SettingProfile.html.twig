@@ -4,8 +4,7 @@
 
 
 
-<!-- Wrap -->
-<div id="wrap">
+    <!-- Wrap -->
 
 
     <!--Banner-->
@@ -17,7 +16,7 @@
         <div class="logo-banner text-center">
             <a href="" title="">
 
-                <img src="{{ asset('bundles/app/images/logo-banner.png') }}" alt="">
+                <img src=" {{ asset('bundles/app/images/logo-banner.png') }}" >
             </a>
         </div>
         <!-- Logo -->
@@ -32,7 +31,7 @@
                 <section class="breakcrumb-sc">
                     <ul class="breadcrumb arrow">
                         <li><a href="index.html"><i class="fa fa-home"></i></a></li>
-                        <li>User Reviews</li>
+                        <li>My Profile</li>
                     </ul>
                 </section>
                 <!--End Breakcrumb-->
@@ -41,24 +40,22 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="user-profile__header">
-                                <h4>{{ ProfileCroisiere.nomCompa }}</h4>
+                                <h4>{{ ProfileCroisiere.nomCompa}}_{{ ProfileCroisiere.nomCompa }}</h4>
                                 <span>Member Sincen {{ ProfileCroisiere.dateInscrit | date('M') }} {{ ProfileCroisiere.dateInscrit | date('Y') }}</span>
                                 <p>
-                                <p>
 
-                                    <img src="{{ asset('bundles/app/images/user/img-1.jpg') }}" alt="">
+                                    <img src="{{ asset('images/products/'~ProfileCroisiere.imageName) }}" alt="">
                                 </p>
                             </div>
 
                             <ul class="user-profile__navigation">
-                                <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">My Bookings</a></li>
-                                <li> <a href="{{ path('profileEvent') }}"><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">My profile</a></li>
-                                <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-review.png') }}" alt="">My reviews</a></li>
-                                <li class="current"><a href="{{path('profileEventSetting') }}"><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">Settings</a></li>
-                                <li><a href="#"><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Wishlist</a></li>
-                                <li><a href="#"><img src="{{ asset('bundles/app/images/icon/icon-back.png') }}" alt="">Sign out</a></li>
+                                <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">Bookings</a></li>
+                                <li class="current"><a href=""><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">My profile</a></li>
+                                <li><a href="{{ path('show_ship') }}"><img src="{{ asset('bundles/app/images/icon/icon-review.png') }}" alt="">My Ships</a></li>
+                                <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">My Cruises</a></li>
+                                <li><a href="{{ path('cruise_pictures') }}"><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Pictures</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}"><img src="{{ asset('bundles/app/images/icon/icon-back.png') }}" alt="">Sign out</a></li>
                             </ul>
-
                         </div>
                         <div class="col-md-9">
                             <h2 class="user-profile__title">Settings</h2>

@@ -25,7 +25,7 @@ class Itineraire
      */
     private $id ;
     /**
-     * @ORM\OneToOne(targetEntity="croisiere" )
+     * @ORM\ManyToOne(targetEntity="croisiere", inversedBy=" Itineraire")
      * @ORM\JoinColumn(name="id_croisiere", referencedColumnName="id")
      */
     public $id_croisiere;

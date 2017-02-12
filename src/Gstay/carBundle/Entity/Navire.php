@@ -3,6 +3,7 @@ namespace Gstay\carBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Created by PhpStorm.
@@ -12,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 /**
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Navire
 {
@@ -23,8 +25,8 @@ class Navire
 private $id ;
 
     /**
-     * @ORM\OneToOne(targetEntity="ProfileCroisiere",)
-     * @ORM\JoinColumn(name="id_navire", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="ProfileCroisiere", inversedBy="Navire")
+     * @ORM\JoinColumn(name="id_userCruiser", referencedColumnName="id")
      */
     private $id_profile ;
 
@@ -44,6 +46,22 @@ private $id ;
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdProfile()
+    {
+        return $this->id_profile;
+    }
+
+    /**
+     * @param mixed $id_profile
+     */
+    public function setIdProfile($id_profile)
+    {
+        $this->id_profile = $id_profile;
     }
 
     /**
@@ -450,99 +468,80 @@ private $id ;
      * @ORM\Column(type="text",length=65000)
      */
     private $tenue ;
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName")
+     *
+     */
+    private $imageFile;
 
     /**
-     *@ORM\Column(type="string", length=1000)
-     * @Assert\Image(
-     *     allowLandscape = false,
-     *     allowPortrait = false,
-     *     minWidth = 200,
-     *     maxWidth = 400,
-     *     minHeight = 200,
-     *     maxHeight = 400
-     * )
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
      */
-
-    private $photo1;
+    private $imageName;
 
     /**
-     * @return mixed
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
      */
-    public function getPhoto1()
+    private $updatedAt;
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     *
+     * @return Navire
+     */
+    public function setImageFile(File $image = null)
     {
-        return $this->photo1;
+        $this->imageFile = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        return $this;
     }
 
     /**
-     * @param mixed $photo1
+     * @return File|null
      */
-
-    public function setPhoto1(File $file =null)
+    public function getImageFile()
     {
-        $this->photo1 = $file;
+        return $this->imageFile;
     }
 
     /**
-     * @return mixed
+     * @param string $imageName
+     *
+     * @return Navire
      */
-    public function getPhoto2()
+    public function setImageName($imageName)
     {
-        return $this->photo2;
+        $this->imageName = $imageName;
+
+
+        return $this;
     }
 
     /**
-     * @param mixed $photo2
+     * @return string|null
      */
-    public function setPhoto2(File $file =null)
+    public function getImageName()
     {
-        $this->photo2 = $file;
+        return $this->imageName;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getPhoto3()
-    {
-        return $this->photo3;
-    }
-
-    /**
-     * @param mixed $photo3
-     */
-    public function setPhoto3(File $file =null)
-    {
-        $this->photo3 = $file;
-    }
-
-    /**
-     * @return mixed
-     */
-
-    /**
-     *@ORM\Column(type="string", length=1000)
-     * @Assert\Image(
-     *     allowLandscape = false,
-     *     allowPortrait = false,
-     *     minWidth = 200,
-     *     maxWidth = 400,
-     *     minHeight = 200,
-     *     maxHeight = 400
-     * )
-     */
-    private $photo2;
-    /**
-     *@ORM\Column(type="string", length=1000)
-     * @Assert\Image(
-     *     allowLandscape = false,
-     *     allowPortrait = false,
-     *     minWidth = 201,
-     *     maxWidth = 400,
-     *     minHeight = 200,
-     *     maxHeight = 400
-     * )
-     */
-    private $photo3;
-
 
 
 

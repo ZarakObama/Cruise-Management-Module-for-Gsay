@@ -25,10 +25,26 @@ class Cabine
  */
     private $id ;
     /**
-     * @ORM\OneToOne(targetEntity="navire")
-     * @ORM\JoinColumn(name="id_navire", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="croisiere",inversedBy="Cabine")
+     * @ORM\JoinColumn(name="id_croisiere", referencedColumnName="id")
      */
-    public $id_navire;
+    public $id_croisiere;
+
+    /**
+     * @return mixed
+     */
+    public function getIdCroisiere()
+    {
+        return $this->id_croisiere;
+    }
+
+    /**
+     * @param mixed $id_croisiere
+     */
+    public function setIdCroisiere($id_croisiere)
+    {
+        $this->id_croisiere = $id_croisiere;
+    }
     /**
      * @ORM\Column(type="string",length=255)
      */
@@ -321,34 +337,5 @@ class Cabine
     /**
      * @return mixed
      */
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
-
-    /**
-     * @param mixed $photo
-     */
-    public function setPhoto(File $file =null)
-    {
-        $this->photo = $file;
-    }
-    /**
-     * @ORM\Column(type="text",length=65000)
-     */
-    private $avantage ;
-    /**
-     *@ORM\Column(type="string", length=1000)
-     * @Assert\Image(
-     *     allowLandscape = false,
-     *     allowPortrait = false,
-     *     minWidth = 200,
-     *     maxWidth = 400,
-     *     minHeight = 200,
-     *     maxHeight = 400
-     * )
-     */
-
-    private $photo;
 
 }

@@ -362,9 +362,8 @@ class ProfileCroisiere
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="logo_image", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName")
      *
-     * @var File
      */
     private $imageFile;
 
@@ -391,7 +390,7 @@ class ProfileCroisiere
      *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      *
-     * @return logo
+     * @return ProfileCroisiere
      */
     public function setImageFile(File $image = null)
     {
@@ -417,7 +416,7 @@ class ProfileCroisiere
     /**
      * @param string $imageName
      *
-     * @return logo
+     * @return ProfileCroisiere
      */
     public function setImageName($imageName)
     {

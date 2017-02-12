@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+{% block title %} mon profile  {% endblock %}
+{% block body %}
+
+<!-- Wrap -->
+
+
+<!--Banner-->
+<section class="sub-banner">
+    <!--Background-->
+    <div class="bg-parallax bg-1"></div>
+    <!--End Background-->
+    <!-- Logo -->
+    <div class="logo-banner text-center">
+        <a href="" title="">
+
+            <img src=" {{ asset('bundles/app/images/logo-banner.png') }}" >
+        </a>
+    </div>
+    <!-- Logo -->
+</section>
+<!--End Banner-->
+
+<!-- Main -->
+<div class="main">
+    <div class="container">
+        <div class="main-cn element-page bg-white clearfix">
+            <!--Breakcrumb-->
+            <section class="breakcrumb-sc">
+                <ul class="breadcrumb arrow">
+                    <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+                    <li>My Profile</li>
+                </ul>
+            </section>
+            <!--End Breakcrumb-->
+
+            <section class="user-profile">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="user-profile__header">
+                            <h4>{{ ProfileCroisiere.nomCompa}}_{{ ProfileCroisiere.nomCompa }}</h4>
+                            <span>Member Sincen {{ ProfileCroisiere.dateInscrit | date('M') }} {{ ProfileCroisiere.dateInscrit | date('Y') }}</span>
+                            <p>
+
+                                <img src="{{ asset('images/products/'~ProfileCroisiere.imageName) }}" alt="">
+                            </p>
+                        </div>
+
+                        <ul class="user-profile__navigation">
+                            <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">Bookings</a></li>
+                            <li ><a href=""><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">My profile</a></li>
+                            <li><a href="{{ path('show_ship') }}"><img src="{{ asset('bundles/app/images/icon/icon-review.png') }}" alt="">My Ships</a></li>
+                            <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">My Cruises</a></li>
+                            <li class="current"><a href=""><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Pictures</a></li>
+                            <li><a href="{{ path('fos_user_security_logout') }}"><img src="{{ asset('bundles/app/images/icon/icon-back.png') }}" alt="">Sign out</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9">
+
+                        <div class="user-form">
+                            <div class="row">
+                                <h3> Manage Personal Portfolio</h3>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{ form_start(form)}}
+                                    <div class="field-input">
+
+                                        <label> Describe this Image </label>
+                                        {{ form_widget(form.description, {'attr': {'class': 'form-control','placeholder':'Description' }}) }}
+                                    </div>
+
+
+                                    <div class="field-input">
+                                        <span>Upload</span>
+                                        {{ form_widget(form.imageFile, {'id':'uploadBtn','attr': {'class': 'upload','onchange':'"readURL(this);"'}}) }}
+
+
+
+
+                                    </div>
+                                    <div class="field-input">
+
+                                        <button class="awe-btn awe-btn-1 awe-btn-small">Add Image </button>
+                                    </div>
+                                    {{ form_end(form) }}
+
+
+
+
+
+                                </div>
+                                <div class="col-md-6">
+                                    <table id="example" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                                        <thead>
+                                        <tr>
+                                            <th> Image </th>
+
+                                            <th> Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tfoot>
+
+                                        <tr>
+                                            <th> Image</th>
+
+                                            <th> Action</th>
+                                        </tr>
+                                        </tfoot>
+
+                                        <tbody>
+                                        {% for picturess in picturess %}
+
+                                            <tr>
+                                                <td> <img style="width:50%;" class="img-thumbnail" src="{{ asset('images/products/'~ picturess.imageName) }}" alt=""></td>
+
+                                                <td>
+
+
+                                                    <a href="{{ path('delete_cruise_pictures',{'id': picturess.id}) }}"><button type="button" class="btn btn-danger" >Delete</button></a>
+
+                                                </td>
+
+                                            </tr>
+
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}
+         {% block js %}
+             <script type="text/javascript" src="{{ asset('jTable/jquery-2.1.4.min.js') }}"></script>
+             <script type="text/javascript" src="{{ asset('jTable/jquery.dataTables.min.js') }}"></script>
+             <script type="text/javascript">$(document).ready(function() {
+                     $('#example').DataTable();
+                 } );
+             </script>
+         {% endblock js %}

@@ -1,0 +1,236 @@
+{% extends 'base.html.twig' %}
+{% block title %} add promo {% endblock %}
+{% block body %}
+
+
+
+    <!-- Wrap -->
+<div id="wrap">
+
+
+    <!--Banner-->
+    <section class="sub-banner">
+        <!--Background-->
+        <div class="bg-parallax bg-1"></div>
+        <!--End Background-->
+        <!-- Logo -->
+        <div class="logo-banner text-center">
+            <a href="" title="">
+
+                <img src=" {{ asset('bundles/app/images/logo-banner.png') }}" >
+            </a>
+        </div>
+        <!-- Logo -->
+    </section>
+    <!--End Banner-->
+
+    <!-- Main -->
+    <div class="main">
+        <div class="container">
+            <div class="main-cn element-page bg-white clearfix">
+                <!--Breakcrumb-->
+                <section class="breakcrumb-sc">
+                    <ul class="breadcrumb arrow">
+                        <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+                        <li>My Ships</li>
+                    </ul>
+                </section>
+                <!--End Breakcrumb-->
+
+                <section class="user-profile">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="user-profile__header">
+                                <h4>{{ ProfileCroisiere.nomCompa}}_{{ ProfileCroisiere.nomCompa }}</h4>
+                                <span>Member Sincen {{ ProfileCroisiere.dateInscrit | date('M') }} {{ ProfileCroisiere.dateInscrit | date('Y') }}</span>
+                                <p>
+
+                                    <img src="{{ asset('images/products/'~ProfileCroisiere.imageName) }}" alt="">
+                                </p>
+                            </div>
+
+                            <ul class="user-profile__navigation">
+                                <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">Bookings</a></li>
+                                <li ><a href=""><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">My profile</a></li>
+                                <li class="current"><a href="{{ path('show_ship') }}"><img src="{{ asset('bundles/app/images/icon/icon-review.png') }}" alt="">My Ships</a></li>
+                                <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">My Cruises</a></li>
+                                <li><a href="{{ path('cruise_pictures') }}"><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Pictures</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}"><img src="{{ asset('bundles/app/images/icon/icon-back.png') }}" alt="">Sign out</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-8">
+
+                            <div class="user-form">
+                                <div class="row">
+                                    <h3> Information of the ship</h3>
+                                </div>
+                                <div class="row">
+                                    <h3> Global Information</h3>
+                                    <div class="col-md-6">
+
+                                        {{ form_start(form)}}
+                                        <div class="field-input">
+                                            <label> Name</label>
+
+                                            {{ form_widget(form.nom, {'attr': {'class': 'form-control','placeholder':'Name' }}) }}
+                                        </div>
+
+
+                                        <div class="field-input">
+                                            <label>Commissioning of the boat</label>
+                                            {{ form_widget(form.mise_service, {'attr': {'class': 'form-control','placeholder':'Commissioning of the boat ' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            <label>Renovated in</label>
+                                            {{ form_widget(form.renove, {'attr': {'class': 'form-control','placeholder':'Renovated in ' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            <label>Length</label>
+                                            {{ form_widget(form.longueur, {'attr': {'class': 'form-control','placeholder':'Length ' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            <label>ship draught</label>
+                                            {{ form_widget(form.tirant, {'attr': {'class': 'form-control','placeholder':'ship draught ' }}) }}
+
+                                        </div>
+
+                                        <div class="field-input">
+                                            <label>Tonnage</label>
+                                            {{ form_widget(form.tonnage, {'attr': {'class': 'form-control','placeholder':'Tonnage ' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            <label>Speed</label>
+                                            {{ form_widget(form.vitesse, {'attr': {'class': 'form-control','placeholder':'Speed ' }}) }}
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="field-input">
+                                            <label>Number of bridges</label>
+                                            {{ form_widget(form.nbr_pont, {'attr': {'class': 'form-control','placeholder':'Number of bridges ' }}) }}
+
+                                        </div>
+
+
+                                        <div class="field-input">
+                                            <label>Accommodation capacity
+                                            </label>
+                                            {{ form_widget(form.capacite, {'attr': {'class': 'form-control','placeholder':'Accommodation capacity ' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            <label>Crew members</label>
+                                            {{ form_widget(form.equipage, {'attr': {'class': 'form-control','placeholder':'Crew members ' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            <label>Languages spoken on board</label>
+                                            {{ form_widget(form.langue, {'attr': {'class': 'form-control','placeholder':'Languages spoken on board ' }}) }}
+
+                                        </div>
+
+
+                                        <div class="field-input">
+                                            <label>Currencies accepted on board</label>
+                                            {{ form_widget(form.monnaies, {'attr': {'class': 'form-control','placeholder':'Currencies accepted on board ' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            <label>Internet on board</label>
+                                            {{ form_widget(form.internet, {'attr': {'class': 'form-control','placeholder':'Internet on board' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            <label>Ship Image</label>
+                                            {{ form_widget(form.imageFile) }}
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="field-input">
+                                            <label> Included services</label>
+                                            {{ form_widget(form.service, {'attr': {'class': 'ckeditor' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            <label>Cabins</label>
+                                            {{ form_widget(form.cabines, {'attr': {'class': 'ckeditor' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            <label> entertainment</label>
+                                            {{ form_widget(form.divertis, {'attr': {'class': 'ckeditor' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            <label> Wellness and fitness</label>
+                                            {{ form_widget(form.fitness, {'attr': {'class': 'ckeditor' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            <label> Shopping</label>
+                                            {{ form_widget(form.shopping, {'attr': {'class': 'ckeditor' }}) }}
+
+                                        </div>
+                                        <div class="field-input">
+                                            <label> Benefits for families</label>
+                                            {{ form_widget(form.famille, {'attr': {'class': 'ckeditor' }}) }}
+
+                                        </div>
+
+                                        <div class="field-input">
+                                            <label> Clothing</label>
+                                            {{ form_widget(form.tenue, {'attr': {'class': 'ckeditor' }}) }}
+
+                                        </div>
+
+                                        <div class="field-input">
+                                            <button class="awe-btn awe-btn-1 awe-btn-medium">Add Ship</button>
+                                        </div>
+
+                                    </div>
+
+
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- End Main -->
+
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

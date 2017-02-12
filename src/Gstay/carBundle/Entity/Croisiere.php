@@ -13,8 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+
+
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Croisiere
 {
@@ -25,15 +29,44 @@ class Croisiere
      */
     private $id ;
     /**
- * @ORM\OneToOne(targetEntity="navire")
+ * @ORM\ManyToOne(targetEntity="navire",inversedBy="Croisiere")
  * @ORM\JoinColumn(name="id_navire", referencedColumnName="id")
  */
     public $id_navire;
+    /**
+     * @ORM\ManyToOne(targetEntity="ProfileCroisiere", inversedBy="Croisiere")
+     * @ORM\JoinColumn(name="id_userCruiser", referencedColumnName="id")
+     */
+    private $id_profile ;
+
+    /**
+     * @return mixed
+     */
+    public function getDateArr()
+    {
+        return $this->date_arr;
+    }
+
+    /**
+     * @param mixed $date_arr
+     */
+    public function setDateArr($date_arr)
+    {
+        $this->date_arr = $date_arr;
+    }
 
     /**
      * @ORM\Column(type="integer")
      */
     private $num_croissiere ;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nb_cabine ;
+    /**
+     * @ORM\Column(type="string",length=255)
+     */
+    private $nom ;
     /**
      * @ORM\Column(type="string",length=255)
      */
@@ -47,13 +80,13 @@ class Croisiere
      */
     private $port_arr ;
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $duree ;
-    /**
      * @ORM\Column(type="date")
      */
     private $date_dep ;
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date_arr ;
     /**
      * @ORM\Column(type="text",length=65000)
      */
@@ -66,43 +99,83 @@ class Croisiere
      * @ORM\Column(type="text",length=65000)
      */
     private $offre_special ;
+
     /**
-     * @ORM\Column(type="string")
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
-     * @Assert\File(mimeTypes={ "application/pdf" })
+     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName")
+     *
+     * @var File
      */
-    private $brochure;
-    /**
-     *@ORM\Column(type="string", length=1000)
-     * @Assert\Image(
-     *     allowLandscape = false,
-     *     allowPortrait = false,
-     *     minWidth = 200,
-     *     maxWidth = 400,
-     *     minHeight = 200,
-     *     maxHeight = 400
-     * )
-     */
-
-    private $photo1;
-    /**
-     *@ORM\Column(type="string", length=1000)
-     * @Assert\Image(
-     *     allowLandscape = false,
-     *     allowPortrait = false,
-     *     minWidth = 200,
-     *     maxWidth = 400,
-     *     minHeight = 200,
-     *     maxHeight = 400
-     * )
-     */
-
-    private $photo2;
+    private $imageFile;
 
     /**
-     * @return mixed
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
      */
+    private $imageName;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     *
+     * @return Croisiere
+     */
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param string $imageName
+     *
+     * @return Croisiere
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
+
+
     public function getId()
     {
         return $this->id;
@@ -135,18 +208,6 @@ class Croisiere
     /**
      * @return mixed
      */
-    public function getIdCabine()
-    {
-        return $this->id_cabine;
-    }
-
-    /**
-     * @param mixed $id_cabine
-     */
-    public function setIdCabine($id_cabine)
-    {
-        $this->id_cabine = $id_cabine;
-    }
 
     /**
      * @return mixed
@@ -212,21 +273,7 @@ class Croisiere
         $this->port_arr = $port_arr;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getDuree()
-    {
-        return $this->duree;
-    }
 
-    /**
-     * @param mixed $duree
-     */
-    public function setDuree($duree)
-    {
-        $this->duree = $duree;
-    }
 
     /**
      * @return mixed
@@ -242,6 +289,22 @@ class Croisiere
     public function setDateDep($date_dep)
     {
         $this->date_dep = $date_dep;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNbCabine()
+    {
+        return $this->nb_cabine;
+    }
+
+    /**
+     * @param mixed $nb_cabine
+     */
+    public function setNbCabine($nb_cabine)
+    {
+        $this->nb_cabine = $nb_cabine;
     }
 
     /**
@@ -295,79 +358,35 @@ class Croisiere
     /**
      * @return mixed
      */
-    public function getBrochure()
+    public function getIdProfile()
     {
-        return $this->brochure;
+        return $this->id_profile;
     }
 
     /**
-     * @param mixed $brochure
+     * @param mixed $id_profile
      */
-    public function setBrochure($brochure)
+    public function setIdProfile($id_profile)
     {
-        $this->brochure = $brochure;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPhoto1()
-    {
-        return $this->photo1;
-    }
-
-    /**
-     * @param mixed $photo1
-     */
-    public function setPhoto1(File $file =null)
-    {
-        $this->photo1 = $file;
+        $this->id_profile = $id_profile;
     }
 
     /**
      * @return mixed
      */
-    public function getPhoto2()
+    public function getNom()
     {
-        return $this->photo2;
+        return $this->nom;
     }
 
     /**
-     * @param mixed $photo2
+     * @param mixed $nom
      */
-    public function setPhoto2(File $file =null)
+    public function setNom($nom)
     {
-        $this->photo2 = $file;
+        $this->nom = $nom;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPhoto3()
-    {
-        return $this->photo3;
-    }
-
-    /**
-     * @param mixed $photo3
-     */
-    public function setPhoto3(File $file =null)
-    {
-        $this->photo3 = $file;
-    }
-    /**
-     *@ORM\Column(type="string", length=1000)
-     * @Assert\Image(
-     *     allowLandscape = false,
-     *     allowPortrait = false,
-     *     minWidth = 200,
-     *     maxWidth = 400,
-     *     minHeight = 200,
-     *     maxHeight = 400
-     * )
-     */
-
-    private $photo3;
 
 
 

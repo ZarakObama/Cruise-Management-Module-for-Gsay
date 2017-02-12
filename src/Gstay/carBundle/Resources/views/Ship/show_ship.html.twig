@@ -1,0 +1,159 @@
+{% extends 'base.html.twig' %}
+{% block title %} Manage Promos {% endblock %}
+{% block body %}
+
+    <link href="{{ asset('jTable/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
+
+    <!-- Wrap -->
+    <!-- Wrap -->
+
+
+    <!--Banner-->
+    <section class="sub-banner">
+        <!--Background-->
+        <div class="bg-parallax bg-1"></div>
+        <!--End Background-->
+        <!-- Logo -->
+        <div class="logo-banner text-center">
+            <a href="" title="">
+
+                <img src=" {{ asset('bundles/app/images/logo-banner.png') }}" >
+            </a>
+        </div>
+        <!-- Logo -->
+    </section>
+    <!--End Banner-->
+
+    <!-- Main -->
+    <div class="main">
+        <div class="container">
+            <div class="main-cn element-page bg-white clearfix">
+                <!--Breakcrumb-->
+                <section class="breakcrumb-sc">
+                    <ul class="breadcrumb arrow">
+                        <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+                        <li>My Ships</li>
+                    </ul>
+                </section>
+                <!--End Breakcrumb-->
+
+                <section class="user-profile">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="user-profile__header">
+                                <h4>{{ ProfileCroisiere.nomCompa}}_{{ ProfileCroisiere.nomCompa }}</h4>
+                                <span>Member Sincen {{ ProfileCroisiere.dateInscrit | date('M') }} {{ ProfileCroisiere.dateInscrit | date('Y') }}</span>
+                                <p>
+
+                                    <img src="{{ asset('images/products/'~ProfileCroisiere.imageName) }}" alt="">
+                                </p>
+                            </div>
+
+                            <ul class="user-profile__navigation">
+                                <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">Bookings</a></li>
+                                <li ><a href=""><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">My profile</a></li>
+                                <li class="current"><a href="{{ path('show_ship') }}"><img src="{{ asset('bundles/app/images/icon/icon-review.png') }}" alt="">My Ships</a></li>
+                                <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">My Cruises</a></li>
+                                <li><a href="{{ path('cruise_pictures') }}"><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Pictures</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}"><img src="{{ asset('bundles/app/images/icon/icon-back.png') }}" alt="">Sign out</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-9">
+
+                            <div class="user-form">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3>Manage Ships</h3>
+                                        {% if    app.request.get('msg')  and  msg != "" %}
+                                        <div class="alert alert-success">
+                                            <strong>Well done!</strong>
+
+                                            {{ app.request.get('msg') }}
+                                        </div>
+                                         {% endif %}
+
+
+
+
+
+                                        <div class="field-input">
+                                            <a href="{{ path('add_ship') }}">
+                                            <button  class="awe-btn awe-btn-1 awe-btn-medium">Add New Ship </button>
+                                            </a>
+                                        </div>
+
+
+
+
+                                         <br>
+                                          <br>
+                                           <br>
+
+                                        <table id="example" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                                            <thead>
+                                         <tr>
+                                             <th> Ship Name</th>
+                                             <th> Commissioning of the boat</th>
+
+                                             <th> Crew members</th>
+                                             <th> Accommodation capacity </th>
+                                             <th> Action</th>
+                                         </tr>
+                                         </thead>
+                                            <tfoot>
+
+                                            <tr>
+                                                <th> Ship Name</th>
+                                             <th> Commissioning of the boat</th>
+
+                                             <th> Crew members</th>
+                                             <th> Accommodation capacity </th>
+                                             <th> Action</th>
+                                            </tr>
+                                            </tfoot>
+
+                                            <tbody>
+                                        {% for Navire in Navire %}
+
+                                            <tr>
+                                                <td> {{ Navire.nom }}</td>
+                                                <td> {{ Navire.miseService | date('y/m/d') }}</td>
+
+                                                <td> {{ Navire.equipage }} </td>
+                                                <td> {{ Navire.capacite }} % </td>
+                                                <td>
+
+                                                <a href="{{ path('edit_ship',{'nom': Navire.nom}) }}"><button type="button" class="btn btn-primary" >Edit</button></a>
+                                                 &nbsp;
+
+                                                   <a href="{{ path('delete_ship',{'id': Navire.id}) }}"><button type="button" class="btn btn-danger" >Delete</button></a>
+
+
+                                                </br>
+
+                                            </tr>
+
+                                        {% endfor %}
+                                            </tbody>
+                        </table>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- End Main -->
+
+
+{% endblock %}
+
+        {% block js %}
+        <script type="text/javascript" src="{{ asset('jTable/jquery-2.1.4.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('jTable/jquery.dataTables.min.js') }}"></script>
+        <script type="text/javascript">$(document).ready(function() {
+                $('#example').DataTable();
+            } );
+        </script>
+        {% endblock js %}
