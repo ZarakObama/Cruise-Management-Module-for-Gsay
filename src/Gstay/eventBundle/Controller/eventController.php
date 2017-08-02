@@ -2,171 +2,167 @@
 /**
  * Created by PhpStorm.
  * User: HD_EXECUTION
- * Date: 01/02/2017
- * Time: 15:43
+ * Date: 05/02/2017
+ * Time: 16:36
  */
 
 namespace Gstay\eventBundle\Controller;
-use Gstay\eventBundle\Form\profileType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
+
+use Gstay\eventBundle\Entity\evenement;
+use Gstay\eventBundle\Form\evenementType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-
-use AppBundle\Entity\User;
-use Gstay\eventBundle\Entity\profile;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use FOS\UserBundle\Event\FilterUserResponseEvent;
-use FOS\UserBundle\Event\FormEvent;
-use FOS\UserBundle\Event\GetResponseUserEvent;
-use FOS\UserBundle\Form\Factory\FactoryInterface;
-use FOS\UserBundle\FOSUserEvents;
-use FOS\UserBundle\Model\UserInterface;
-use FOS\UserBundle\Model\UserManagerInterface;
-
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-
 
 class eventController extends Controller
 {
+
     /**
-     * @Route("/")
+     * @Route("/showEvents",name="listeventprofile")
      */
-    public function indexAction()
+    public function listAction()
     {
+        $user = $this->getUser();
+        if (!is_object($user) ) {
 
-       /* $user = $this->getUser();
-        $id=0;
-        if(!empty($user))
-        {
-            $id=$this->getUser()->getId();
-
+            return $this->redirectToRoute('fos_user_security_login');
         }
+        $id =  $this->getUser()->getId();
+
+        $event = new evenement();
+        $em=$this->getDoctrine()->getManager();
+        $profile = $em->getRepository('GstayeventBundle:profile')->findOneBy(array('id_user' => $id ));
+
+        $event = $em->getRepository('GstayeventBundle:evenement')->findAll();
 
 
-         $this->render('GstayeventBundle:Default:layout.html.twig',array(
-            'id'=>$id
-        ));*/
 
-      //  return $this->render('test.html.twig');
+        return $this->render('GstayeventBundle:profile/event:allevent.html.twig',array(
+            'event'=>$event,
+            'profile'=>$profile,
+            'msg'=>"Edit successful"
+
+
+        ));
+
     }
 
     /**
-     * @Route("/profile", name="profileEvent")
+     * @Route("/addEvent",name="ajoutevent")
      */
-    public function profileAction()
+    public function addEventAction(Request $request)
     {
         $user = $this->getUser();
-        $id =  $this->getUser()->getId();
-        $email = $this->getUser()->getemail();
+        if (!is_object($user) ) {
 
+            return $this->redirectToRoute('fos_user_security_login');
+        }
+        $id =  $this->getUser()->getId();
+
+        $event = new evenement();
+        $em=$this->getDoctrine()->getManager();
+        $profile = $em->getRepository('GstayeventBundle:profile')->findOneBy(array('id_user' => $id ));
+
+        // $evenement = $em->getRepository('GstayeventBundle:evenement')->findOneBy(array('id_user' => $id ));
+        $form = $this->createForm(evenementType::class,$event );
+
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() ) {
+            $event->setIdOrganisateur($user);
+            $em->persist($event);
+            $em->flush();
+             return $this->redirect($this->generateUrl('listeventprofile',array('msg'=>"add successful")));
+        }
+        return $this->render('GstayeventBundle:profile/event:addevent.html.twig',array(
+            'form'=>$form->createView(),
+            'profile'=>$profile,
+
+
+
+        ));
+
+
+
+
+    }
+
+    /**
+     * @Route("/editEvent/{title}",name="editevent")
+     */
+    public function editEventAction(Request $request,$title)
+    {
+        $user = $this->getUser();
+        if (!is_object($user) ) {
+
+            return $this->redirectToRoute('fos_user_security_login');
+        }
+        $id =  $this->getUser()->getId();
+
+
+        $em=$this->getDoctrine()->getManager();
+        $profile = $em->getRepository('GstayeventBundle:profile')->findOneBy(array('id_user' => $id ));
+
+         $evenement = $em->getRepository('GstayeventBundle:evenement')->findOneBy(array('titre' => $title ));
+        $form = $this->createForm(evenementType::class,$evenement );
+
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() ) {
+
+            $em->persist($evenement);
+            $em->flush();
+              return $this->redirect($this->generateUrl('listeventprofile',array('msg'=>"Edit successful")));
+        }
+        return $this->render('GstayeventBundle:profile/event:editevent.html.twig',array(
+            'form'=>$form->createView(),
+            'profile'=>$profile,
+
+
+
+        ));
+
+
+
+
+    }
+
+    /**
+     * @Route("/deleteEvent/{id}",name="deleteevent")
+     */
+    public function deleteEventAction($id)
+    {
+        $user = $this->getUser();
         if (!is_object($user) ) {
 
             return $this->redirectToRoute('fos_user_security_login');
         }
 
+
+
         $em=$this->getDoctrine()->getManager();
-        $profile = $em->getRepository('GstayeventBundle:profile')->findOneBy(array('id_user' => $id ));
-        $newid = $em->getRepository('AppBundle:User')->findOneBy(array('id' => $id ));
-        if(empty($profile))
-        {
-            $profile= new profile();
+        $evenement = $em->getRepository('GstayeventBundle:evenement')->findOneBy(array('id' => $id ));
 
-            $profile->setIdUser($newid);
-            $profile->setDateInscrit(new \DateTime());
-
-            $em->persist($profile);
+            $em->remove($evenement);
             $em->flush();
 
-            return $this->render('GstayeventBundle:profile:myProfile.html.twig',array(
-                'profile'=>$profile,
-                'email'=>$email
-            ));
-        }
+        return $this->redirect($this->generateUrl('listeventprofile',array('msg'=>"Delete successful")));
 
 
 
-        return $this->render('GstayeventBundle:profile:myProfile.html.twig',array(
-            'profile'=>$profile,
-            'email'=>$email
-        ));
+
+
     }
 
     /**
-     * @Route("/profileSetting", name="profileEventSetting")
+     * @Route("/hamdi",name="hamdi")
      */
-    public function profilSettingAction(Request $request)
-    {
+    public function testAction()
+{
+    return $this->render('GstayeventBundle:profile/event:testtable.html.twig');
 
-
-        $user = $this->getUser();
-        $id =  $this->getUser()->getId();
-
-        $em=$this->getDoctrine()->getManager();
-        $profile = $em->getRepository('GstayeventBundle:profile')->findOneBy(array('id_user' => $id ));
-        $form = $this->createForm(profileType::class,$profile );
-
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() )
-        {
-
-            $em->persist($profile);
-            $em->flush();
-            return $this->redirect($this->generateUrl('profileEvent'));
-        }
-
-
-
-
-
-        /** @var $dispatcher EventDispatcherInterface */
-        $dispatcher = $this->get('event_dispatcher');
-
-        $event = new GetResponseUserEvent($user, $request);
-        $dispatcher->dispatch(FOSUserEvents::CHANGE_PASSWORD_INITIALIZE, $event);
-
-        if (null !== $event->getResponse()) {
-            return $event->getResponse();
-        }
-
-        /** @var $formFactory FactoryInterface */
-        $formFactory = $this->get('fos_user.change_password.form.factory');
-
-        $form1 = $formFactory->createForm();
-        $form1->setData($user);
-
-        $form1->handleRequest($request);
-
-        if ($form1->isSubmitted() && $form1->isValid()) {
-            /** @var $userManager UserManagerInterface */
-            $userManager = $this->get('fos_user.user_manager');
-
-            $event = new FormEvent($form1, $request);
-            $dispatcher->dispatch(FOSUserEvents::CHANGE_PASSWORD_SUCCESS, $event);
-
-            $userManager->updateUser($user);
-
-            if (null === $response = $event->getResponse()) {
-                $url = $this->generateUrl('fos_user_profile_show');
-                $response = new RedirectResponse($url);
-            }
-
-            $dispatcher->dispatch(FOSUserEvents::CHANGE_PASSWORD_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
-
-            return $response;
-        }
-
-        return $this->render('GstayeventBundle:profile:SettingProfile.html.twig',array(
-            'form1'=>$form1->createView(),
-            'form'=>$form->createView(),
-         'profile'=>$profile
-
-        ));
-
-    }
+}
 }

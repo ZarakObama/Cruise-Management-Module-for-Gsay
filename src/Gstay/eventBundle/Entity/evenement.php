@@ -27,7 +27,12 @@ class evenement
      * @ORM\JoinColumn(name="id_organisateur", referencedColumnName="id")
      */
     private $id_organisateur ;
-//id_hotel
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Gstay\hotelBundle\Entity\Hotel", )
+     * @ORM\JoinColumn(name="hotel", referencedColumnName="id")
+     */
+    private $hotel;
     /**
      * @ORM\Column(type="string",length=255)
      */
@@ -63,13 +68,51 @@ class evenement
     private $prix;
 
     /**
-     *@ORM\Column(type="integer")
+     *@ORM\Column(type="integer",nullable=true)
      */
     private $conditionpromo;
     /**
-     *@ORM\Column(type="string",length=255,options={"default" : "en attente"})
+     *@ORM\Column(type="string",length=255,nullable=true,options={"default" : "en attente"})
      */
     private $promo;
+
+    /**
+     *@ORM\Column(type="string",length=255,nullable=true,options={"default" : "en attente"})
+     */
+    private $comfirm_hotel;
+
+    /**
+     * @return mixed
+     */
+    public function getHotel()
+    {
+        return $this->hotel;
+    }
+
+    /**
+     * @param mixed $id_hotel
+     */
+    public function setHotel($hotel)
+    {
+        $this->hotel = $hotel;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComfirmHotel()
+    {
+        return $this->comfirm_hotel;
+    }
+
+    /**
+     * @param mixed $comfirm_hotel
+     */
+    public function setComfirmHotel($comfirm_hotel)
+    {
+        $this->comfirm_hotel = $comfirm_hotel;
+    }
+
 
     /**
      * @return mixed

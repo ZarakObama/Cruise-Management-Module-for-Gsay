@@ -25,22 +25,36 @@ class Itineraire
      */
     private $id ;
     /**
-     * @ORM\ManyToOne(targetEntity="croisiere", inversedBy=" Itineraire")
-     * @ORM\JoinColumn(name="id_croisiere", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Croisiere")
      */
+
     public $id_croisiere;
+
+
+
+
+
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $jour ;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $port_escale ;
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="time",nullable=true)
      */
     private $a ;
+    public function __toString() {
+        return "Jour ".$this->getJour();
+
+
+
+
+    }
+
+
 
     /**
      * @return mixed
@@ -154,11 +168,11 @@ class Itineraire
         $this->info = $info;
     }
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="time",nullable=true)
      */
     private $de ;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $info ;
 

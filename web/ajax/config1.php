@@ -2,7 +2,7 @@
 class config{
 	function getConnexion(){
 		$servername="localhost";
-		$dbname="ajax";
+		$dbname="pidev";
 		$username="root";
 		$password="";
 		$conn=new PDO("mysql:host=$servername;dbname=$dbname",$username,$password);

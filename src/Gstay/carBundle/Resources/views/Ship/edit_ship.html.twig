@@ -54,10 +54,10 @@
 
                             <ul class="user-profile__navigation">
                                 <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">Bookings</a></li>
-                                <li ><a href=""><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">My profile</a></li>
+                                <li ><a href="{{ path('cruiser_profile') }}"><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">My profile</a></li>
                                 <li class="current"><a href="{{ path('show_ship') }}"><img src="{{ asset('bundles/app/images/icon/icon-review.png') }}" alt="">My Ships</a></li>
-                                <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">My Cruises</a></li>
-                                <li><a href="{{ path('cruise_pictures') }}"><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Pictures</a></li>
+                                <li><a href="{{ path('show_cruise') }}"><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">My Cruises</a></li>
+                                <li ><a href="{{ path('cruise_pictures') }}"><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Pictures</a></li>
                                 <li><a href="{{ path('fos_user_security_logout') }}"><img src="{{ asset('bundles/app/images/icon/icon-back.png') }}" alt="">Sign out</a></li>
                             </ul>
                         </div>

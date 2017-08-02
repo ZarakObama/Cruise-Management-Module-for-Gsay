@@ -8,6 +8,7 @@
 
 namespace Gstay\carBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -29,7 +30,7 @@ class Croisiere
      */
     private $id ;
     /**
- * @ORM\ManyToOne(targetEntity="navire",inversedBy="Croisiere")
+ * @ORM\ManyToOne(targetEntity="Navire",inversedBy="Croisiere")
  * @ORM\JoinColumn(name="id_navire", referencedColumnName="id")
  */
     public $id_navire;
@@ -38,6 +39,39 @@ class Croisiere
      * @ORM\JoinColumn(name="id_userCruiser", referencedColumnName="id")
      */
     private $id_profile ;
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="Itineraire", mappedBy="Croisiere" , cascade={"persist"})
+     * @ORM\OrderBy({"id"="ASC"})
+     */
+    public $days ;
+
+
+
+    public function __construct()
+    {
+        $this->days = new ArrayCollection();
+    }
+    /**
+     * @return mixed
+     */
+    public function getDays()
+    {
+        return $this->days;
+    }
+
+    /**
+     * @param mixed $days
+     */
+    public function setDays(ArrayCollection $days)
+    {
+        $this->days = $days;
+    }
+    public function addDay(Itineraire $day)
+    {
+        $day->setIdCroisiere($this);
+        $this->days->add($day);
+    }
 
     /**
      * @return mixed
@@ -56,47 +90,40 @@ class Croisiere
     }
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $num_croissiere ;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $nb_cabine ;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $nom ;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $destination ;
+
     /**
-     * @ORM\Column(type="string",length=255)
-     */
-    private $port_dep ;
-    /**
-     * @ORM\Column(type="string",length=255)
-     */
-    private $port_arr ;
-    /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date",nullable=true)
      */
     private $date_dep ;
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date",nullable=true)
      */
     private $date_arr ;
     /**
-     * @ORM\Column(type="text",length=65000)
+     * @ORM\Column(type="text",length=65000,nullable=true)
      */
     private $service_inclu ;
     /**
-     * @ORM\Column(type="text",length=65000)
+     * @ORM\Column(type="text",length=65000,nullable=true)
      */
     private $service_plus ;
     /**
-     * @ORM\Column(type="text",length=65000)
+     * @ORM\Column(type="text",length=65000,nullable=true)
      */
     private $offre_special ;
 
@@ -110,14 +137,14 @@ class Croisiere
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      *
      * @var string
      */
     private $imageName;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime",nullable=true)
      *
      * @var \DateTime
      */

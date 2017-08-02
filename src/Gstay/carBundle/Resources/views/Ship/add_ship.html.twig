@@ -2,6 +2,8 @@
 {% block title %} add promo {% endblock %}
 {% block body %}
 
+<link rel="stylesheet" href="{{ asset('lobibox-master/dist/css/lobibox.min.css') }}"/>
+
 
 
     <!-- Wrap -->
@@ -51,10 +53,10 @@
 
                             <ul class="user-profile__navigation">
                                 <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">Bookings</a></li>
-                                <li ><a href=""><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">My profile</a></li>
+                                <li ><a href="{{ path('cruiser_profile') }}"><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">My profile</a></li>
                                 <li class="current"><a href="{{ path('show_ship') }}"><img src="{{ asset('bundles/app/images/icon/icon-review.png') }}" alt="">My Ships</a></li>
-                                <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">My Cruises</a></li>
-                                <li><a href="{{ path('cruise_pictures') }}"><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Pictures</a></li>
+                                <li><a href="{{ path('show_cruise') }}"><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">My Cruises</a></li>
+                                <li ><a href="{{ path('cruise_pictures') }}"><img src="{{ asset('bundles/app/images/icon/icon-heart.png') }}" alt="">Pictures</a></li>
                                 <li><a href="{{ path('fos_user_security_logout') }}"><img src="{{ asset('bundles/app/images/icon/icon-back.png') }}" alt="">Sign out</a></li>
                             </ul>
                         </div>
@@ -68,43 +70,52 @@
                                     <h3> Global Information</h3>
                                     <div class="col-md-6">
 
-                                        {{ form_start(form)}}
+                                        {{ form_start(form, {'attr': {'onsubmit':'return validateForm()' }} ) }}
                                         <div class="field-input">
                                             <label> Name</label>
 
-                                            {{ form_widget(form.nom, {'attr': {'class': 'form-control','placeholder':'Name' }}) }}
+                                            {{ form_widget(form.nom, {'id':'nom','attr': {'class': 'form-control','placeholder':'Name' }}) }}
                                         </div>
 
 
                                         <div class="field-input">
                                             <label>Commissioning of the boat</label>
-                                            {{ form_widget(form.mise_service, {'attr': {'class': 'form-control','placeholder':'Commissioning of the boat ' }}) }}
+                                            {{ form_widget(form.mise_service.year, {'attr': {'class': 'form-control','placeholder':'Commissioning of the boat ' }}) }}
+                                            <div class="hidden">
+
+                                            {{ form_widget(form.mise_service, {'attr': {'class': 'form-control','placeholder':'Commissioning of the boat '  }}) }}
+
+                                            </div>
 
                                         </div>
                                         <div class="field-input">
                                             <label>Renovated in</label>
-                                            {{ form_widget(form.renove, {'attr': {'class': 'form-control','placeholder':'Renovated in ' }}) }}
+                                            {{ form_widget(form.renove.year, {'attr': {'class': 'form-control','placeholder':'Renovated in ' }}) }}
+                                            <div class="hidden">
+                                                {{ form_widget(form.renove, {'attr': {'class': 'form-control','placeholder':'Renovated in ' }}) }}
+
+                                            </div>
 
                                         </div>
                                         <div class="field-input">
                                             <label>Length</label>
-                                            {{ form_widget(form.longueur, {'attr': {'class': 'form-control','placeholder':'Length ' }}) }}
+                                            {{ form_widget(form.longueur, {'attr': {'class': 'form-control','placeholder':'Length in meters ' }}) }}
 
                                         </div>
                                         <div class="field-input">
                                             <label>ship draught</label>
-                                            {{ form_widget(form.tirant, {'attr': {'class': 'form-control','placeholder':'ship draught ' }}) }}
+                                            {{ form_widget(form.tirant, {'attr': {'class': 'form-control','placeholder':'ship draught in meters' }}) }}
 
                                         </div>
 
                                         <div class="field-input">
                                             <label>Tonnage</label>
-                                            {{ form_widget(form.tonnage, {'attr': {'class': 'form-control','placeholder':'Tonnage ' }}) }}
+                                            {{ form_widget(form.tonnage, {'attr': {'class': 'form-control','placeholder':'Tonnage in gross tons ' }}) }}
 
                                         </div>
                                         <div class="field-input">
                                             <label>Speed</label>
-                                            {{ form_widget(form.vitesse, {'attr': {'class': 'form-control','placeholder':'Speed ' }}) }}
+                                            {{ form_widget(form.vitesse, {'attr': {'class': 'form-control','placeholder':'Speed in knots ' }}) }}
 
                                         </div>
                                     </div>
@@ -119,7 +130,7 @@
                                         <div class="field-input">
                                             <label>Accommodation capacity
                                             </label>
-                                            {{ form_widget(form.capacite, {'attr': {'class': 'form-control','placeholder':'Accommodation capacity ' }}) }}
+                                            {{ form_widget(form.capacite, {'attr': {'class': 'form-control','placeholder':'Accommodation capacity  ' }}) }}
 
                                         </div>
                                         <div class="field-input">
@@ -205,6 +216,22 @@
         </div>
     </div>
     <!-- End Main -->
+    <script src="{{ asset('lobibox-master/lib/jquery.1.11.min.js') }}"> </script>
+    <script src="{{ asset('lobibox-master/dist/js/lobibox.min.js') }}"> </script>
+    <script>
+
+        function validateForm() {
+
+            var nom = document.getElementById('nom').value;
+            if (nom.length < 3) {
+                Lobibox.notify('warning', {
+                    title: 'Short title  ',
+                    msg: 'the field title is too short  .'
+                });
+                return false;
+            }
+        }
+        </script>
 
     {% endblock %}
 

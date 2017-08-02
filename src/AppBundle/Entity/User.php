@@ -20,7 +20,7 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\Column(type="string",columnDefinition="ENUM('organisateur', 'hostguest','hotel','rent')")
+     * @ORM\Column(type="string")
      */
     private $type;
 

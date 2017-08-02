@@ -389,7 +389,7 @@ private $id ;
      */
 
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $nom ;
     /**
@@ -401,71 +401,71 @@ private $id ;
      */
     private $renove ;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float",nullable=true)
      */
     private $longueur ;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float",nullable=true)
      */
     private $tirant ;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float",nullable=true)
      */
     private $tonnage ;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float",nullable=true)
      */
     private $vitesse ;
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float",nullable=true)
      */
     private $nbr_pont ;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $capacite ;
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $equipage ;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $langue ;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $monnaies ;
     /**
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $internet ;
     /**
- * @ORM\Column(type="text",length=65000)
+ * @ORM\Column(type="text",length=65000,nullable=true)
  */
     private $cabines ;
     /**
-     * @ORM\Column(type="text",length=65000)
+     * @ORM\Column(type="text",length=65000,nullable=true)
      */
     private $service ;
     /**
-     * @ORM\Column(type="text",length=65000)
+     * @ORM\Column(type="text",length=65000,nullable=true)
      */
     private $divertis;
     /**
-     * @ORM\Column(type="text",length=65000)
+     * @ORM\Column(type="text",length=65000,nullable=true)
      */
     private $fitness ;
     /**
-     * @ORM\Column(type="text",length=65000)
+     * @ORM\Column(type="text",length=65000,nullable=true)
      */
     private $shopping ;
     /**
-     * @ORM\Column(type="text",length=65000)
+     * @ORM\Column(type="text",length=65000,nullable=true)
      */
     private $famille ;
     /**
-     * @ORM\Column(type="text",length=65000)
+     * @ORM\Column(type="text",length=65000,nullable=true)
      */
     private $tenue ;
     /**
@@ -477,7 +477,7 @@ private $id ;
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      *
      * @var string
      */

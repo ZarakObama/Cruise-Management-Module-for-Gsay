@@ -47,7 +47,7 @@
                             </div>
 
                             <ul class="user-profile__navigation">
-                                <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">My Bookings</a></li>
+                                <li><a href="{{ path('listeventprofile') }}"><img src="{{ asset('bundles/app/images/icon/icon-cart.png') }}" alt="">My Events</a></li>
                                 <li class="current"><a href=""><img src="{{ asset('bundles/app/images/icon/icon-user.png') }}" alt="">My profile</a></li>
                                 <li><a href=""><img src="{{ asset('bundles/app/images/icon/icon-review.png') }}" alt="">My reviews</a></li>
                                 <li><a href="{{ path('profileEventSetting') }}"><img src="{{ asset('bundles/app/images/icon/icon-setting.png') }}" alt="">Settings</a></li>
@@ -66,7 +66,7 @@
                                         <ul>
                                             <li><span>First Name</span>{{ profile.prenom }}</li>
                                             <li><span>Last Name</span>{{ profile.nom }}</li>
-                                            <li><span>Email</span>{{ email }}</li>
+                                            <li><span>Email</span>{{ profile.idUser.email }}</li>
                                             <li><span>Phone number</span>{{ profile.tel }}</li>
 
                                         </ul>

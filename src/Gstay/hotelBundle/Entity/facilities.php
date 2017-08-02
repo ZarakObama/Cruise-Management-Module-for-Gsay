@@ -27,7 +27,7 @@ class facilities
      */
     private $id_hotel ;
     /**
-     * @ORM\Column(type="string", unique=true ,columnDefinition="ENUM('Free breakfast', 'Sauna service','Swimming pool','Smoking area','Hair dryer','Spa service','Restaurant','Airport transfer','Laundry service','24-hour front desk','Free parking','Casino','Wi-Fi','Business center')")
+     * @ORM\Column(type="string", unique=true )
      */
     private $name;
 

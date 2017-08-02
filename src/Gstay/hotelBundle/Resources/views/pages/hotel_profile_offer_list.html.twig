@@ -133,8 +133,12 @@
                                                 <td> {{ promoHotel.pourcentage }} % </td>
                                                 <td>
 
+
                                                 <a href="{{ path('edit_promo',{'name': promoHotel.name}) }}"><button type="button" class="btn btn-primary" >Edit</button></a>
-                                                    <a href="{{ path('delete_promo',{'id': promoHotel.id}) }}"><button type="button" class="btn btn-warning" >Delete</button></a>
+                                                &nbsp;
+                                                &nbsp;
+
+                                                    <a href="{{ path('delete_promo',{'id': promoHotel.id}) }}"><button type="button" class="btn btn-alert" >Delete</button></a>
 
                                                 </td>
 

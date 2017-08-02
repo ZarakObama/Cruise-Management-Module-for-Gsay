@@ -17,8 +17,29 @@ class NavireType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('mise_service')
-            ->add('renove')
+
+            ->add('mise_service' ,\Symfony\Component\Form\Extension\Core\Type\DateType::class, array(
+        'widget' => 'choice',
+        'years' => range(1920, 2017),
+
+        'format' => 'dd-MMMM-yyyy',
+
+
+
+
+    ))
+            ->add('renove' ,\Symfony\Component\Form\Extension\Core\Type\DateType::class, array(
+                'widget' => 'choice',
+                'years' => range(1920, 2017),
+
+                'format' => 'dd-MMMM-yyyy',
+
+
+
+
+            ))
+
+
             ->add('longueur')
             ->add('tirant')
             ->add('tonnage')
